@@ -4,8 +4,11 @@
     <Filter Include="src">
       <UniqueIdentifier>{6fd0bfb0-1af0-48ba-a6cd-72dc20853be1}</UniqueIdentifier>
     </Filter>
-    <Filter Include="header">
+    <Filter Include="include">
       <UniqueIdentifier>{f8af5f47-5930-4b2c-9f77-a90db038e21c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\yoru">
+      <UniqueIdentifier>{67eccd1e-45ea-4940-b5ae-15bb1909747e}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -14,8 +17,8 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="header\utils.h">
-      <Filter>header</Filter>
+    <ClInclude Include="include\yoru\utils.h">
+      <Filter>include\yoru</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
