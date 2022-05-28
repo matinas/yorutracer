@@ -10,15 +10,90 @@
     <Filter Include="include\yoru">
       <UniqueIdentifier>{67eccd1e-45ea-4940-b5ae-15bb1909747e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="include\yoru\objects">
+      <UniqueIdentifier>{a19a2032-75d3-4960-8a74-f5ea049c74b3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\objects">
+      <UniqueIdentifier>{571eb486-5f19-43c7-aeb3-e838e237adb5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\yoru\objects\intersections">
+      <UniqueIdentifier>{fa41bb8a-ff38-4983-a9b9-08d02fcb2c66}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\objects\intersections">
+      <UniqueIdentifier>{e845a0c6-6d9e-4b74-9bf4-e957b4a802f8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\yoru\render">
+      <UniqueIdentifier>{b1a7e70f-ee87-4cab-9747-cc4579f334fb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\render">
+      <UniqueIdentifier>{51844fa9-7785-492b-acd4-210cc9dd0a60}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\tests">
+      <UniqueIdentifier>{c893c209-4f41-4635-a6f4-f71b2efabb0b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\math">
+      <UniqueIdentifier>{ecd1ed4e-5567-46e6-9f91-9309ab41e7fb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\yoru\math">
+      <UniqueIdentifier>{f0bcf2cf-5854-4db4-8138-039b7e857a6f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\yoru\tests">
+      <UniqueIdentifier>{c6f9d686-64a8-4885-889a-8e05322c1652}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ray.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\objects\sphere.cpp">
+      <Filter>src\objects</Filter>
+    </ClCompile>
+    <ClCompile Include="src\objects\intersections\rayintersectioninfo.cpp">
+      <Filter>src\objects\intersections</Filter>
+    </ClCompile>
+    <ClCompile Include="src\render\raytracer.cpp">
+      <Filter>src\render</Filter>
+    </ClCompile>
+    <ClCompile Include="src\tests\test_utils.cpp">
+      <Filter>src\tests</Filter>
+    </ClCompile>
+    <ClCompile Include="src\math\math.cpp">
+      <Filter>src\math</Filter>
+    </ClCompile>
+    <ClCompile Include="src\tests\test_math.cpp">
+      <Filter>src\tests</Filter>
+    </ClCompile>
+    <ClCompile Include="src\utils.cpp">
       <Filter>src</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\yoru\utils.h">
       <Filter>include\yoru</Filter>
+    </ClInclude>
+    <ClInclude Include="include\yoru\ray.h">
+      <Filter>include\yoru</Filter>
+    </ClInclude>
+    <ClInclude Include="include\yoru\objects\sphere.h">
+      <Filter>include\yoru\objects</Filter>
+    </ClInclude>
+    <ClInclude Include="include\yoru\objects\intersections\rayintersectioninfo.h">
+      <Filter>include\yoru\objects\intersections</Filter>
+    </ClInclude>
+    <ClInclude Include="include\yoru\render\raytracer.h">
+      <Filter>include\yoru\render</Filter>
+    </ClInclude>
+    <ClInclude Include="include\yoru\tests\test_math.h">
+      <Filter>include\yoru\tests</Filter>
+    </ClInclude>
+    <ClInclude Include="include\yoru\tests\test_utils.h">
+      <Filter>include\yoru\tests</Filter>
+    </ClInclude>
+    <ClInclude Include="include\yoru\math\math.h">
+      <Filter>include\yoru\math</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
