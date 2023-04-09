@@ -22,12 +22,6 @@
     <Filter Include="src\objects\intersections">
       <UniqueIdentifier>{e845a0c6-6d9e-4b74-9bf4-e957b4a802f8}</UniqueIdentifier>
     </Filter>
-    <Filter Include="include\yoru\render">
-      <UniqueIdentifier>{b1a7e70f-ee87-4cab-9747-cc4579f334fb}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\render">
-      <UniqueIdentifier>{51844fa9-7785-492b-acd4-210cc9dd0a60}</UniqueIdentifier>
-    </Filter>
     <Filter Include="src\tests">
       <UniqueIdentifier>{c893c209-4f41-4635-a6f4-f71b2efabb0b}</UniqueIdentifier>
     </Filter>
@@ -39,6 +33,12 @@
     </Filter>
     <Filter Include="include\yoru\tests">
       <UniqueIdentifier>{c6f9d686-64a8-4885-889a-8e05322c1652}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\yoru\renderer">
+      <UniqueIdentifier>{b1a7e70f-ee87-4cab-9747-cc4579f334fb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\renderer">
+      <UniqueIdentifier>{51844fa9-7785-492b-acd4-210cc9dd0a60}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -54,9 +54,6 @@
     <ClCompile Include="src\objects\intersections\rayintersectioninfo.cpp">
       <Filter>src\objects\intersections</Filter>
     </ClCompile>
-    <ClCompile Include="src\render\raytracer.cpp">
-      <Filter>src\render</Filter>
-    </ClCompile>
     <ClCompile Include="src\tests\test_utils.cpp">
       <Filter>src\tests</Filter>
     </ClCompile>
@@ -68,6 +65,30 @@
     </ClCompile>
     <ClCompile Include="src\utils.cpp">
       <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\renderer\raytracer.cpp">
+      <Filter>src\renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\visual studio 2015\Projects\cgfromscratch\cgfromscratch\src\renderer\screen.cpp">
+      <Filter>src\renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\visual studio 2015\Projects\cgfromscratch\cgfromscratch\src\renderer\canvas.cpp">
+      <Filter>src\renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\math\matrix_3x3.cpp">
+      <Filter>src\math</Filter>
+    </ClCompile>
+    <ClCompile Include="src\math\point2d.cpp">
+      <Filter>src\math</Filter>
+    </ClCompile>
+    <ClCompile Include="src\math\point3d.cpp">
+      <Filter>src\math</Filter>
+    </ClCompile>
+    <ClCompile Include="src\math\vector2d.cpp">
+      <Filter>src\math</Filter>
+    </ClCompile>
+    <ClCompile Include="src\math\vector3d.cpp">
+      <Filter>src\math</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -83,9 +104,6 @@
     <ClInclude Include="include\yoru\objects\intersections\rayintersectioninfo.h">
       <Filter>include\yoru\objects\intersections</Filter>
     </ClInclude>
-    <ClInclude Include="include\yoru\render\raytracer.h">
-      <Filter>include\yoru\render</Filter>
-    </ClInclude>
     <ClInclude Include="include\yoru\tests\test_math.h">
       <Filter>include\yoru\tests</Filter>
     </ClInclude>
@@ -93,6 +111,30 @@
       <Filter>include\yoru\tests</Filter>
     </ClInclude>
     <ClInclude Include="include\yoru\math\math.h">
+      <Filter>include\yoru\math</Filter>
+    </ClInclude>
+    <ClInclude Include="include\yoru\renderer\raytracer.h">
+      <Filter>include\yoru\renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="include\yoru\renderer\screen.h">
+      <Filter>include\yoru\renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="include\yoru\renderer\canvas.h">
+      <Filter>include\yoru\renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="include\yoru\math\matrix3x3.h">
+      <Filter>include\yoru\math</Filter>
+    </ClInclude>
+    <ClInclude Include="include\yoru\math\point2d.h">
+      <Filter>include\yoru\math</Filter>
+    </ClInclude>
+    <ClInclude Include="include\yoru\math\point3d.h">
+      <Filter>include\yoru\math</Filter>
+    </ClInclude>
+    <ClInclude Include="include\yoru\math\vector2d.h">
+      <Filter>include\yoru\math</Filter>
+    </ClInclude>
+    <ClInclude Include="include\yoru\math\vector3d.h">
       <Filter>include\yoru\math</Filter>
     </ClInclude>
   </ItemGroup>

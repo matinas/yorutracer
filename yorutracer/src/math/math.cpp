@@ -47,7 +47,7 @@ glm::vec2 canvas_to_screen_glm(const glm::vec2 canvas_coord, const glm::vec2 can
 	return glm::vec2(new_canvas_coords.x, new_canvas_coords.y);
 }
 
-// an alternative custom version that avoids using glm library for storing and handling matrice. the goal was just to demo
+// an alternative custom version that avoids using glm library for storing and handling matrices. the goal is just to prove
 // that we can get the same results even when we use a different vector and storage convention (column-vector matrices,
 // row-major storage, in contrast to the conventions used by glm which are row-vector matrices, column-major storage)
 // as long as we stay consistent with the chosen conventions, we should get the same results

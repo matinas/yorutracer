@@ -11,22 +11,36 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\..\..\visual studio 2015\Projects\cgfromscratch\cgfromscratch\src\renderer\canvas.cpp" />
+    <ClCompile Include="..\..\..\..\visual studio 2015\Projects\cgfromscratch\cgfromscratch\src\renderer\screen.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\math\math.cpp" />
+    <ClCompile Include="src\math\matrix_3x3.cpp" />
+    <ClCompile Include="src\math\point2d.cpp" />
+    <ClCompile Include="src\math\point3d.cpp" />
+    <ClCompile Include="src\math\vector2d.cpp" />
+    <ClCompile Include="src\math\vector3d.cpp" />
     <ClCompile Include="src\objects\intersections\rayintersectioninfo.cpp" />
     <ClCompile Include="src\objects\sphere.cpp" />
     <ClCompile Include="src\ray.cpp" />
-    <ClCompile Include="src\render\raytracer.cpp" />
+    <ClCompile Include="src\renderer\raytracer.cpp" />
     <ClCompile Include="src\tests\test_math.cpp" />
     <ClCompile Include="src\tests\test_utils.cpp" />
     <ClCompile Include="src\utils.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\yoru\math\math.h" />
+    <ClInclude Include="include\yoru\math\matrix3x3.h" />
+    <ClInclude Include="include\yoru\math\point2d.h" />
+    <ClInclude Include="include\yoru\math\point3d.h" />
+    <ClInclude Include="include\yoru\math\vector2d.h" />
+    <ClInclude Include="include\yoru\math\vector3d.h" />
     <ClInclude Include="include\yoru\objects\intersections\rayintersectioninfo.h" />
     <ClInclude Include="include\yoru\objects\sphere.h" />
     <ClInclude Include="include\yoru\ray.h" />
-    <ClInclude Include="include\yoru\render\raytracer.h" />
+    <ClInclude Include="include\yoru\renderer\canvas.h" />
+    <ClInclude Include="include\yoru\renderer\raytracer.h" />
+    <ClInclude Include="include\yoru\renderer\screen.h" />
     <ClInclude Include="include\yoru\tests\test_math.h" />
     <ClInclude Include="include\yoru\tests\test_utils.h" />
     <ClInclude Include="include\yoru\utils.h" />
