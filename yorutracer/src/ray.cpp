@@ -1,4 +1,4 @@
-#include "yoru/ray.h"
+#include "ray.h"
 
 using namespace yorutracer;
 

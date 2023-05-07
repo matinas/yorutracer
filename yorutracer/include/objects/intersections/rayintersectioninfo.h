@@ -3,7 +3,7 @@
 
 #include <glm\vec3.hpp>
 
-#include "yoru\ray.h"
+#include "ray.h"
 
 namespace yorutracer {
 	namespace objects {

@@ -4,8 +4,8 @@
 #include <glm\mat2x2.hpp>
 #include <glm\mat3x3.hpp>
 
-#include "yoru\math\math.h"
-#include "yoru\utils.h"
+#include "math\math.h"
+#include "utils.h"
 
 #define IMAGE_WIDTH 500
 #define IMAGE_HEIGHT 500

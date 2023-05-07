@@ -1,7 +1,7 @@
 #include <glm\glm.hpp>
 
-#include "yoru\objects\sphere.h"
-#include "yoru\ray.h"
+#include "objects\sphere.h"
+#include "ray.h"
 
 using namespace yorutracer;
 using namespace yorutracer::objects;

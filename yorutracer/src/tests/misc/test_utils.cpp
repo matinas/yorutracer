@@ -2,7 +2,7 @@
 #include <glm/mat2x2.hpp>
 #include <iostream>
 
-#include "yoru/utils.h"
+#include "utils.h"
 
 using namespace yorutracer;
 

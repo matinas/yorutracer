@@ -3,7 +3,7 @@
 
 #include <glm\vec3.hpp>
 
-#include "yoru\objects\intersections\rayintersectioninfo.h"
+#include "objects\intersections\rayintersectioninfo.h"
 
 namespace yorutracer {
 	namespace objects {

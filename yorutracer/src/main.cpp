@@ -3,11 +3,17 @@
 #include <iostream>
 #include <FreeImage.h>
 
-#include "yoru/utils.h"
-#include "yoru/objects/sphere.h"
-#include "yoru/objects/intersections/rayintersectioninfo.h"
-#include "yoru/ray.h"
-#include "yoru/math/math.h"
+#include "utils.h"
+#include "objects/sphere.h"
+#include "objects/intersections/rayintersectioninfo.h"
+#include "ray.h"
+#include "math/math.h"
+
+#include "renderer\canvas.h"
+#include "renderer\screen.h"
+
+#include "tests\renderer\testsuite_canvas.h"
+#include "tests\renderer\testsuite_screen.h"
 
 RGBQUAD rgb_black = {0,0,0};
 RGBQUAD rgb_blue = {255,0,0};
@@ -18,6 +24,16 @@ using namespace yorutracer::math;
 
 int main(char* argv, int argc)
 {
+	yoru::test::TestSuiteCanvas testCanvas("TestSuiteCanvas");
+	testCanvas.run();
+
+	yoru::test::TestSuiteScreen testScreen("TestSuiteScreen");
+	testScreen.run();
+
+	return EXIT_SUCCESS;
+
+	//////////////////////////////////////////
+
 	FreeImage_Initialise();
 
 	FIBITMAP *bitmap = FreeImage_Allocate(IMAGE_HEIGHT, IMAGE_WIDTH, 24);

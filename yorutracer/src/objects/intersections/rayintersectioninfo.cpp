@@ -1,4 +1,4 @@
-#include "yoru\objects\intersections\rayintersectioninfo.h"
+#include "objects\intersections\rayintersectioninfo.h"
 
 #include <glm\glm.hpp>
 

@@ -7,38 +7,59 @@
     <Filter Include="include">
       <UniqueIdentifier>{f8af5f47-5930-4b2c-9f77-a90db038e21c}</UniqueIdentifier>
     </Filter>
-    <Filter Include="include\yoru">
-      <UniqueIdentifier>{67eccd1e-45ea-4940-b5ae-15bb1909747e}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="include\yoru\objects">
-      <UniqueIdentifier>{a19a2032-75d3-4960-8a74-f5ea049c74b3}</UniqueIdentifier>
-    </Filter>
     <Filter Include="src\objects">
       <UniqueIdentifier>{571eb486-5f19-43c7-aeb3-e838e237adb5}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="include\yoru\objects\intersections">
-      <UniqueIdentifier>{fa41bb8a-ff38-4983-a9b9-08d02fcb2c66}</UniqueIdentifier>
     </Filter>
     <Filter Include="src\objects\intersections">
       <UniqueIdentifier>{e845a0c6-6d9e-4b74-9bf4-e957b4a802f8}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\tests">
-      <UniqueIdentifier>{c893c209-4f41-4635-a6f4-f71b2efabb0b}</UniqueIdentifier>
-    </Filter>
     <Filter Include="src\math">
       <UniqueIdentifier>{ecd1ed4e-5567-46e6-9f91-9309ab41e7fb}</UniqueIdentifier>
     </Filter>
-    <Filter Include="include\yoru\math">
-      <UniqueIdentifier>{f0bcf2cf-5854-4db4-8138-039b7e857a6f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="include\yoru\tests">
-      <UniqueIdentifier>{c6f9d686-64a8-4885-889a-8e05322c1652}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="include\yoru\renderer">
-      <UniqueIdentifier>{b1a7e70f-ee87-4cab-9747-cc4579f334fb}</UniqueIdentifier>
-    </Filter>
     <Filter Include="src\renderer">
       <UniqueIdentifier>{51844fa9-7785-492b-acd4-210cc9dd0a60}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\math">
+      <UniqueIdentifier>{f0bcf2cf-5854-4db4-8138-039b7e857a6f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\objects">
+      <UniqueIdentifier>{a19a2032-75d3-4960-8a74-f5ea049c74b3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\objects\intersections">
+      <UniqueIdentifier>{fa41bb8a-ff38-4983-a9b9-08d02fcb2c66}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\renderer">
+      <UniqueIdentifier>{b1a7e70f-ee87-4cab-9747-cc4579f334fb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\math\transformation">
+      <UniqueIdentifier>{50a7440b-41de-4c30-ab27-d495e6f88ca7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\math\transformation">
+      <UniqueIdentifier>{aea08b57-e65a-4784-9620-9db78f2a2ab9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\tests">
+      <UniqueIdentifier>{c6f9d686-64a8-4885-889a-8e05322c1652}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\tests\math">
+      <UniqueIdentifier>{66f785df-8791-4c13-b318-ff0dc0f5748f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\tests\renderer">
+      <UniqueIdentifier>{5e7cfc29-5747-4b32-84a4-57d483a35728}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\tests\misc">
+      <UniqueIdentifier>{9b334f8e-cd72-42de-ab60-908becaa43cc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\tests">
+      <UniqueIdentifier>{c893c209-4f41-4635-a6f4-f71b2efabb0b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\tests\math">
+      <UniqueIdentifier>{aa8f6fc2-7f1b-4f5e-823a-c8de984f011c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\tests\misc">
+      <UniqueIdentifier>{946952d0-8228-41a7-bb5d-eea4fa1324ba}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\tests\renderer">
+      <UniqueIdentifier>{5edd0889-857e-4b29-9281-8466fc800d67}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -54,14 +75,8 @@
     <ClCompile Include="src\objects\intersections\rayintersectioninfo.cpp">
       <Filter>src\objects\intersections</Filter>
     </ClCompile>
-    <ClCompile Include="src\tests\test_utils.cpp">
-      <Filter>src\tests</Filter>
-    </ClCompile>
     <ClCompile Include="src\math\math.cpp">
       <Filter>src\math</Filter>
-    </ClCompile>
-    <ClCompile Include="src\tests\test_math.cpp">
-      <Filter>src\tests</Filter>
     </ClCompile>
     <ClCompile Include="src\utils.cpp">
       <Filter>src</Filter>
@@ -69,11 +84,20 @@
     <ClCompile Include="src\renderer\raytracer.cpp">
       <Filter>src\renderer</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\visual studio 2015\Projects\cgfromscratch\cgfromscratch\src\renderer\screen.cpp">
-      <Filter>src\renderer</Filter>
+    <ClCompile Include="src\math\transformation\affine2d.cpp">
+      <Filter>src\math\transformation</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\visual studio 2015\Projects\cgfromscratch\cgfromscratch\src\renderer\canvas.cpp">
-      <Filter>src\renderer</Filter>
+    <ClCompile Include="src\math\transformation\rotation2d.cpp">
+      <Filter>src\math\transformation</Filter>
+    </ClCompile>
+    <ClCompile Include="src\math\transformation\scale2d.cpp">
+      <Filter>src\math\transformation</Filter>
+    </ClCompile>
+    <ClCompile Include="src\math\transformation\transform2d.cpp">
+      <Filter>src\math\transformation</Filter>
+    </ClCompile>
+    <ClCompile Include="src\math\transformation\translation2d.cpp">
+      <Filter>src\math\transformation</Filter>
     </ClCompile>
     <ClCompile Include="src\math\matrix_3x3.cpp">
       <Filter>src\math</Filter>
@@ -90,52 +114,103 @@
     <ClCompile Include="src\math\vector3d.cpp">
       <Filter>src\math</Filter>
     </ClCompile>
+    <ClCompile Include="src\renderer\canvas.cpp">
+      <Filter>src\renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\renderer\screen.cpp">
+      <Filter>src\renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\tests\misc\test_utils.cpp">
+      <Filter>src\tests\misc</Filter>
+    </ClCompile>
+    <ClCompile Include="src\tests\math\test_math.cpp">
+      <Filter>src\tests\math</Filter>
+    </ClCompile>
+    <ClCompile Include="src\tests\renderer\testsuite_screen.cpp">
+      <Filter>src\tests\renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\tests\renderer\testsuite_canvas.cpp">
+      <Filter>src\tests\renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\tests\testsuite.cpp">
+      <Filter>src\tests</Filter>
+    </ClCompile>
+    <ClCompile Include="src\tests\test.cpp">
+      <Filter>src\tests</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="include\yoru\utils.h">
-      <Filter>include\yoru</Filter>
+    <ClInclude Include="include\math\math.h">
+      <Filter>include\math</Filter>
     </ClInclude>
-    <ClInclude Include="include\yoru\ray.h">
-      <Filter>include\yoru</Filter>
+    <ClInclude Include="include\objects\intersections\rayintersectioninfo.h">
+      <Filter>include\objects\intersections</Filter>
     </ClInclude>
-    <ClInclude Include="include\yoru\objects\sphere.h">
-      <Filter>include\yoru\objects</Filter>
+    <ClInclude Include="include\objects\sphere.h">
+      <Filter>include\objects</Filter>
     </ClInclude>
-    <ClInclude Include="include\yoru\objects\intersections\rayintersectioninfo.h">
-      <Filter>include\yoru\objects\intersections</Filter>
+    <ClInclude Include="include\renderer\raytracer.h">
+      <Filter>include\renderer</Filter>
     </ClInclude>
-    <ClInclude Include="include\yoru\tests\test_math.h">
-      <Filter>include\yoru\tests</Filter>
+    <ClInclude Include="include\utils.h">
+      <Filter>include</Filter>
     </ClInclude>
-    <ClInclude Include="include\yoru\tests\test_utils.h">
-      <Filter>include\yoru\tests</Filter>
+    <ClInclude Include="include\ray.h">
+      <Filter>include</Filter>
     </ClInclude>
-    <ClInclude Include="include\yoru\math\math.h">
-      <Filter>include\yoru\math</Filter>
+    <ClInclude Include="include\math\transformation\affine2d.h">
+      <Filter>include\math\transformation</Filter>
     </ClInclude>
-    <ClInclude Include="include\yoru\renderer\raytracer.h">
-      <Filter>include\yoru\renderer</Filter>
+    <ClInclude Include="include\math\transformation\rotation2d.h">
+      <Filter>include\math\transformation</Filter>
     </ClInclude>
-    <ClInclude Include="include\yoru\renderer\screen.h">
-      <Filter>include\yoru\renderer</Filter>
+    <ClInclude Include="include\math\transformation\scale2d.h">
+      <Filter>include\math\transformation</Filter>
     </ClInclude>
-    <ClInclude Include="include\yoru\renderer\canvas.h">
-      <Filter>include\yoru\renderer</Filter>
+    <ClInclude Include="include\math\transformation\transform2d.h">
+      <Filter>include\math\transformation</Filter>
     </ClInclude>
-    <ClInclude Include="include\yoru\math\matrix3x3.h">
-      <Filter>include\yoru\math</Filter>
+    <ClInclude Include="include\math\transformation\translation2d.h">
+      <Filter>include\math\transformation</Filter>
     </ClInclude>
-    <ClInclude Include="include\yoru\math\point2d.h">
-      <Filter>include\yoru\math</Filter>
+    <ClInclude Include="include\math\matrix3x3.h">
+      <Filter>include\math</Filter>
     </ClInclude>
-    <ClInclude Include="include\yoru\math\point3d.h">
-      <Filter>include\yoru\math</Filter>
+    <ClInclude Include="include\math\point2d.h">
+      <Filter>include\math</Filter>
     </ClInclude>
-    <ClInclude Include="include\yoru\math\vector2d.h">
-      <Filter>include\yoru\math</Filter>
+    <ClInclude Include="include\math\point3d.h">
+      <Filter>include\math</Filter>
     </ClInclude>
-    <ClInclude Include="include\yoru\math\vector3d.h">
-      <Filter>include\yoru\math</Filter>
+    <ClInclude Include="include\math\vector2d.h">
+      <Filter>include\math</Filter>
+    </ClInclude>
+    <ClInclude Include="include\math\vector3d.h">
+      <Filter>include\math</Filter>
+    </ClInclude>
+    <ClInclude Include="include\renderer\canvas.h">
+      <Filter>include\renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="include\renderer\screen.h">
+      <Filter>include\renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="include\tests\test.h">
+      <Filter>include\tests</Filter>
+    </ClInclude>
+    <ClInclude Include="include\tests\testsuite.h">
+      <Filter>include\tests</Filter>
+    </ClInclude>
+    <ClInclude Include="include\tests\misc\test_utils.h">
+      <Filter>include\tests\misc</Filter>
+    </ClInclude>
+    <ClInclude Include="include\tests\math\test_math.h">
+      <Filter>include\tests\math</Filter>
+    </ClInclude>
+    <ClInclude Include="include\tests\renderer\testsuite_screen.h">
+      <Filter>include\tests\renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="include\tests\renderer\testsuite_canvas.h">
+      <Filter>include\tests\renderer</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -2,7 +2,7 @@
 #include <glm/vec3.hpp>
 #include <iostream>
 
-#include "yoru/math/math.h"
+#include "math/math.h"
 
 using namespace yorutracer;
 using namespace yorutracer::math;
