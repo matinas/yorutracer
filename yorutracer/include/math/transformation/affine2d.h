@@ -14,7 +14,7 @@ namespace math {
 	{
 	public:
 		Affine2d();
-		Affine2d(Matrix3x3 mat);
+		Affine2d(Matrix3x3* mat);
 		Affine2d(Rotation2d* rot, Translation2d* trans, Scale2d* scale);
 		Affine2d(Rotation2d* rot, Scale2d* scale, Translation2d* trans);
 		~Affine2d();
@@ -31,7 +31,7 @@ namespace math {
 
 	private:
 		void initTransforms(Rotation2d* rot, Translation2d* trans, Scale2d* scale);
-		void fillMatrices(Matrix3x3& rotM, Matrix3x3& transM, Matrix3x3& scaleM);
+		void fillMatrices(Matrix3x3*& rotM, Matrix3x3*& transM, Matrix3x3*& scaleM);
 	};
 }}
 

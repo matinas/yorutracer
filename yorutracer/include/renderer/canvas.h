@@ -2,7 +2,7 @@
 #define CANVAS_H
 
 #include "math\point2d.h"
-#include "math\matrix3x3.h"
+#include "math\matrix\matrix3x3.h"
 #include "math\transformation\affine2d.h"
 
 namespace yoru {
@@ -18,7 +18,7 @@ namespace renderer {
 
 		// creates a canvas with a custom center relative to the global 2D/UI world space coordinate system origin which is at (0,0)
 		// the origin of the canvas by (our) convention is at the center of the rectangle defined by width/height
-		// starting from the center, x goes right and y goes up, in the same way as the global 2D/UI world space coordinate system (z=0)
+		// starting from the origin, x goes right and y goes up, in the same way as the global 2D/UI world space coordinate system (z=0)
 		Canvas(int width, int height, math::Point2d center);
 
 		~Canvas();

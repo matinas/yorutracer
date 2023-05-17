@@ -61,6 +61,12 @@
     <Filter Include="src\tests\renderer">
       <UniqueIdentifier>{5edd0889-857e-4b29-9281-8466fc800d67}</UniqueIdentifier>
     </Filter>
+    <Filter Include="include\math\matrix">
+      <UniqueIdentifier>{4b42ce04-10b9-4c5a-8842-8906a8b240bf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\math\matrix">
+      <UniqueIdentifier>{b3fb3ba5-bb18-4d99-9e32-8e58f877328f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp">
@@ -74,9 +80,6 @@
     </ClCompile>
     <ClCompile Include="src\objects\intersections\rayintersectioninfo.cpp">
       <Filter>src\objects\intersections</Filter>
-    </ClCompile>
-    <ClCompile Include="src\math\math.cpp">
-      <Filter>src\math</Filter>
     </ClCompile>
     <ClCompile Include="src\utils.cpp">
       <Filter>src</Filter>
@@ -99,9 +102,6 @@
     <ClCompile Include="src\math\transformation\translation2d.cpp">
       <Filter>src\math\transformation</Filter>
     </ClCompile>
-    <ClCompile Include="src\math\matrix_3x3.cpp">
-      <Filter>src\math</Filter>
-    </ClCompile>
     <ClCompile Include="src\math\point2d.cpp">
       <Filter>src\math</Filter>
     </ClCompile>
@@ -123,9 +123,6 @@
     <ClCompile Include="src\tests\misc\test_utils.cpp">
       <Filter>src\tests\misc</Filter>
     </ClCompile>
-    <ClCompile Include="src\tests\math\test_math.cpp">
-      <Filter>src\tests\math</Filter>
-    </ClCompile>
     <ClCompile Include="src\tests\renderer\testsuite_screen.cpp">
       <Filter>src\tests\renderer</Filter>
     </ClCompile>
@@ -138,11 +135,20 @@
     <ClCompile Include="src\tests\test.cpp">
       <Filter>src\tests</Filter>
     </ClCompile>
+    <ClCompile Include="src\math\matrix\glmmatrix3x3.cpp">
+      <Filter>src\math\matrix</Filter>
+    </ClCompile>
+    <ClCompile Include="src\math\matrix\matrix3x3.cpp">
+      <Filter>src\math\matrix</Filter>
+    </ClCompile>
+    <ClCompile Include="src\math\matrix\matrixfactory.cpp">
+      <Filter>src\math\matrix</Filter>
+    </ClCompile>
+    <ClCompile Include="src\math\matrix\yorumatrix3x3.cpp">
+      <Filter>src\math\matrix</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="include\math\math.h">
-      <Filter>include\math</Filter>
-    </ClInclude>
     <ClInclude Include="include\objects\intersections\rayintersectioninfo.h">
       <Filter>include\objects\intersections</Filter>
     </ClInclude>
@@ -173,9 +179,6 @@
     <ClInclude Include="include\math\transformation\translation2d.h">
       <Filter>include\math\transformation</Filter>
     </ClInclude>
-    <ClInclude Include="include\math\matrix3x3.h">
-      <Filter>include\math</Filter>
-    </ClInclude>
     <ClInclude Include="include\math\point2d.h">
       <Filter>include\math</Filter>
     </ClInclude>
@@ -203,14 +206,23 @@
     <ClInclude Include="include\tests\misc\test_utils.h">
       <Filter>include\tests\misc</Filter>
     </ClInclude>
-    <ClInclude Include="include\tests\math\test_math.h">
-      <Filter>include\tests\math</Filter>
-    </ClInclude>
     <ClInclude Include="include\tests\renderer\testsuite_screen.h">
       <Filter>include\tests\renderer</Filter>
     </ClInclude>
     <ClInclude Include="include\tests\renderer\testsuite_canvas.h">
       <Filter>include\tests\renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="include\math\matrix\glmmatrix3x3.h">
+      <Filter>include\math\matrix</Filter>
+    </ClInclude>
+    <ClInclude Include="include\math\matrix\matrix3x3.h">
+      <Filter>include\math\matrix</Filter>
+    </ClInclude>
+    <ClInclude Include="include\math\matrix\matrixfactory.h">
+      <Filter>include\math\matrix</Filter>
+    </ClInclude>
+    <ClInclude Include="include\math\matrix\yorumatrix3x3.h">
+      <Filter>include\math\matrix</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

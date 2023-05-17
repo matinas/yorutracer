@@ -59,4 +59,11 @@ namespace math {
 	{
 		return v.getX()*p.getX() + v.getY()*p.getY() + v.getZ()*p.getZ();
 	}
+
+	bool operator==(Vector3d v1, Vector3d v2)
+	{
+		return (v1.getX() == v2.getX())
+			&& (v1.getY() == v2.getY())
+			&& (v1.getZ() == v2.getZ());
+	}
 }}

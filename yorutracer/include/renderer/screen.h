@@ -2,7 +2,7 @@
 #define SCREEN_H
 
 #include "math\point2d.h"
-#include "math\matrix3x3.h"
+#include "math\matrix\matrix3x3.h"
 #include "math\transformation\affine2d.h"
 
 namespace yoru {
@@ -15,8 +15,11 @@ namespace renderer {
 	public:
 		Screen();
 		Screen(int width, int height);
-		Screen(int width, int height, math::Point2d center); // the center of the screen by convention is at the top/left of the rectangle defined by height/width
-															 // from the center x goes right and y goes down (y is mirrored wrt the global 2D/UI world space coordinate system)
+
+		// the origin of the screen by (our) convention is at the top/left of the rectangle defined by height/width
+		// from the origin x goes right and y goes down (y is mirrored wrt the global 2D/UI world space coordinate system)
+		Screen(int width, int height, math::Point2d center);
+
 		~Screen();
 
 		int getWidth();

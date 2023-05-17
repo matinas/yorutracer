@@ -22,6 +22,7 @@ namespace math {
 		friend Vector3d operator*(Vector3d v1, float f);
 		friend Vector3d operator*(float f, Vector3d v1);
 		friend float operator*(Vector3d v, Point3d p);
+		friend bool operator==(Vector3d v1, Vector3d v2);
 
 	private:
 		float x, y, z;

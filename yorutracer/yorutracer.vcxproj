@@ -12,8 +12,10 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp" />
-    <ClCompile Include="src\math\math.cpp" />
-    <ClCompile Include="src\math\matrix_3x3.cpp" />
+    <ClCompile Include="src\math\matrix\glmmatrix3x3.cpp" />
+    <ClCompile Include="src\math\matrix\matrix3x3.cpp" />
+    <ClCompile Include="src\math\matrix\matrixfactory.cpp" />
+    <ClCompile Include="src\math\matrix\yorumatrix3x3.cpp" />
     <ClCompile Include="src\math\point2d.cpp" />
     <ClCompile Include="src\math\point3d.cpp" />
     <ClCompile Include="src\math\transformation\affine2d.cpp" />
@@ -29,7 +31,6 @@
     <ClCompile Include="src\renderer\canvas.cpp" />
     <ClCompile Include="src\renderer\raytracer.cpp" />
     <ClCompile Include="src\renderer\screen.cpp" />
-    <ClCompile Include="src\tests\math\test_math.cpp" />
     <ClCompile Include="src\tests\misc\test_utils.cpp" />
     <ClCompile Include="src\tests\renderer\testsuite_canvas.cpp" />
     <ClCompile Include="src\tests\renderer\testsuite_screen.cpp" />
@@ -38,8 +39,10 @@
     <ClCompile Include="src\utils.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="include\math\math.h" />
-    <ClInclude Include="include\math\matrix3x3.h" />
+    <ClInclude Include="include\math\matrix\glmmatrix3x3.h" />
+    <ClInclude Include="include\math\matrix\matrix3x3.h" />
+    <ClInclude Include="include\math\matrix\matrixfactory.h" />
+    <ClInclude Include="include\math\matrix\yorumatrix3x3.h" />
     <ClInclude Include="include\math\point2d.h" />
     <ClInclude Include="include\math\point3d.h" />
     <ClInclude Include="include\math\transformation\affine2d.h" />
@@ -55,7 +58,6 @@
     <ClInclude Include="include\renderer\canvas.h" />
     <ClInclude Include="include\renderer\raytracer.h" />
     <ClInclude Include="include\renderer\screen.h" />
-    <ClInclude Include="include\tests\math\test_math.h" />
     <ClInclude Include="include\tests\misc\test_utils.h" />
     <ClInclude Include="include\tests\renderer\testsuite_canvas.h" />
     <ClInclude Include="include\tests\renderer\testsuite_screen.h" />

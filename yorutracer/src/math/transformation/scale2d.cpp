@@ -1,4 +1,5 @@
 #include "math\transformation\scale2d.h"
+#include "math\matrix\matrixfactory.h"
 
 namespace yoru {
 namespace math {
@@ -12,10 +13,9 @@ namespace math {
 		this->sx = sx;
 		this->sy = sy;
 		
-		this->matrix = Matrix3x3(sx, 0.0f, 0.0f,
-								 0.0f, sy, 0.0f,
-								 0.0f, 0.0f, 1.0f);
-
+		this->matrix = MatrixFactory::getMatrix(sx, 0.0f, 0.0f,
+												0.0f, sy, 0.0f,
+												0.0f, 0.0f, 1.0f);
 		this->scale = this;
 		this->translation = nullptr;
 		this->rotation = nullptr;

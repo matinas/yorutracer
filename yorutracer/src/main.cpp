@@ -7,20 +7,20 @@
 #include "objects/sphere.h"
 #include "objects/intersections/rayintersectioninfo.h"
 #include "ray.h"
-#include "math/math.h"
 
 #include "renderer\canvas.h"
 #include "renderer\screen.h"
 
 #include "tests\renderer\testsuite_canvas.h"
 #include "tests\renderer\testsuite_screen.h"
+#include "tests\misc\test_utils.h"
 
 RGBQUAD rgb_black = {0,0,0};
 RGBQUAD rgb_blue = {255,0,0};
 
 using namespace yorutracer;
 using namespace yorutracer::objects;
-using namespace yorutracer::math;
+using namespace yorutracer::utils;
 
 int main(char* argv, int argc)
 {
