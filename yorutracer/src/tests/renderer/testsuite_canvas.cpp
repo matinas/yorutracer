@@ -5,6 +5,7 @@
 #include "tests\renderer\testsuite_canvas.h"
 #include "renderer\canvas.h"
 #include "renderer\screen.h"
+#include "renderer\camera.h"
 
 namespace yoru {
 namespace test {
@@ -215,6 +216,47 @@ namespace test {
 			delete point;
 		}
 
+		void checkPointViewportCoords_test(renderer::Canvas canvas, renderer::Camera camera, math::Point2d* point, math::Point2d expected);
+		void checkPointViewportCoords()
+		{
+			// squared canvas (400x400), squared viewport (1.0x1.0)
+			renderer::Canvas canvas = renderer::Canvas(400, 400);
+			renderer::Camera camera = renderer::Camera(math::Point3d(10.0f, 0.0f, 0.0f), math::Vector3d(0.0f, 1.0f, 0.0f), math::Vector3d(0.0f, 0.0f, 1.0f), 1.0f, 100.0f, renderer::Viewport(1.0, 1.0));
+			math::Point2d* point = canvas.getPoint(200, 200);
+			math::Point2d expected = math::Point2d(200, 0);
+			checkPointViewportCoords_test(canvas, camera, point, expected);
+
+			// squared canvas (400x400), squared non-unit viewport (2.0x2.0)
+			canvas = renderer::Canvas(400, 400);
+			camera = renderer::Camera(math::Point3d(10.0f, 0.0f, 0.0f), math::Vector3d(0.0f, 1.0f, 0.0f), math::Vector3d(0.0f, 0.0f, 1.0f), 1.0f, 100.0f, renderer::Viewport(2.0, 2.0));
+			point = canvas.getPoint(200, 200);
+			expected = math::Point2d(200, 0);
+			checkPointViewportCoords_test(canvas, camera, point, expected);
+
+			// 16:9 canvas (1920x1080), 16:9 viewport (16.0x9.0)
+			canvas = renderer::Canvas(400, 400);
+			camera = renderer::Camera(math::Point3d(10.0f, 0.0f, 0.0f), math::Vector3d(0.0f, 1.0f, 0.0f), math::Vector3d(0.0f, 0.0f, 1.0f), 1.0f, 100.0f, renderer::Viewport(1.0, 1.0));
+			point = canvas.getPoint(200, 200);
+			expected = math::Point2d(200, 0);
+			checkPointViewportCoords_test(canvas, camera, point, expected);
+
+			// 16:9 canvas (1920x1080), squared viewport (1.0x1.0)
+			canvas = renderer::Canvas(400, 400);
+			camera = renderer::Camera(math::Point3d(10.0f, 0.0f, 0.0f), math::Vector3d(0.0f, 1.0f, 0.0f), math::Vector3d(0.0f, 0.0f, 1.0f), 1.0f, 100.0f, renderer::Viewport(1.0, 1.0));
+			point = canvas.getPoint(200, 200);
+			expected = math::Point2d(200, 0);
+			checkPointViewportCoords_test(canvas, camera, point, expected);
+
+			// squared canvas (800x800), 16:9 viewport (16.0x9.0)
+			canvas = renderer::Canvas(400, 400);
+			camera = renderer::Camera(math::Point3d(10.0f, 0.0f, 0.0f), math::Vector3d(0.0f, 1.0f, 0.0f), math::Vector3d(0.0f, 0.0f, 1.0f), 1.0f, 100.0f, renderer::Viewport(1.0, 1.0));
+			point = canvas.getPoint(200, 200);
+			expected = math::Point2d(200, 0);
+			checkPointViewportCoords_test(canvas, camera, point, expected);
+
+			delete point;
+		}
+
 		////////////// tests' core logic functions
 
 		void checkPointWorldCoords_test(renderer::Canvas canvas, math::Point2d* point, math::Point2d expected)
@@ -251,6 +293,18 @@ namespace test {
 			std::cout << "The corresponding screen point is (" << screenPoint.getX() << "," << screenPoint.getY() << ")\n";
 
 			assert(screenPoint.getX() == expected.getX() && screenPoint.getY() == expected.getY() && "The canvas point has the wrong screen coordinates");
+		}
+
+		void checkPointViewportCoords_test(renderer::Canvas canvas, renderer::Camera camera, math::Point2d* point, math::Point2d expected)
+		{
+			assert(point != NULL && "Point is not a valid point in the canvas");
+
+			math::Point2d viewportPoint = canvas.toViewportCoords(*point, camera);
+
+			std::cout << "The canvas point is (" << point->getX() << "," << point->getY() << ")\n";
+			std::cout << "The corresponding screen point is (" << viewportPoint.getX() << "," << viewportPoint.getY() << ")\n";
+
+			assert(viewportPoint.getX() == expected.getX() && viewportPoint.getY() == expected.getY() && "The canvas point has the wrong viewport coordinates");
 		}
 	}
 }}

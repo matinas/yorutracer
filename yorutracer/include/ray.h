@@ -3,7 +3,7 @@
 
 #include <glm\vec3.hpp>
 
-namespace yorutracer {
+namespace yoru {
 
 class Ray
 {

@@ -1,6 +1,6 @@
 #include "ray.h"
 
-using namespace yorutracer;
+using namespace yoru;
 
 Ray::Ray()
 {

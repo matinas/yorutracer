@@ -5,7 +5,7 @@
 
 #include "objects\intersections\rayintersectioninfo.h"
 
-namespace yorutracer {
+namespace yoru {
 	namespace objects {
 
 class Sphere

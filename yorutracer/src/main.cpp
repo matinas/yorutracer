@@ -10,17 +10,19 @@
 
 #include "renderer\canvas.h"
 #include "renderer\screen.h"
+#include "renderer\camera.h"
 
 #include "tests\renderer\testsuite_canvas.h"
 #include "tests\renderer\testsuite_screen.h"
+#include "tests\renderer\testsuite_camera.h"
 #include "tests\misc\test_utils.h"
 
 RGBQUAD rgb_black = {0,0,0};
 RGBQUAD rgb_blue = {255,0,0};
 
-using namespace yorutracer;
-using namespace yorutracer::objects;
-using namespace yorutracer::utils;
+using namespace yoru;
+using namespace yoru::objects;
+using namespace yoru::utils;
 
 int main(char* argv, int argc)
 {
@@ -29,6 +31,9 @@ int main(char* argv, int argc)
 
 	yoru::test::TestSuiteScreen testScreen("TestSuiteScreen");
 	testScreen.run();
+
+	yoru::test::TestSuiteCamera testCamera("TestSuiteCamera");
+	testCamera.run();
 
 	return EXIT_SUCCESS;
 

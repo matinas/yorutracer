@@ -3,8 +3,8 @@
 #include "objects\sphere.h"
 #include "ray.h"
 
-using namespace yorutracer;
-using namespace yorutracer::objects;
+using namespace yoru;
+using namespace yoru::objects;
 
 Sphere::Sphere()
 {

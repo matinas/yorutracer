@@ -2,6 +2,7 @@
 
 #include "renderer\screen.h"
 #include "renderer\canvas.h"
+#include "renderer\camera.h"
 #include "math\transformation\translation2d.h"
 #include "math\transformation\scale2d.h"
 
@@ -100,6 +101,18 @@ namespace renderer {
 		math::Scale2d ratio = math::Scale2d(static_cast<float>(screen.getWidth()) / this->width, static_cast<float>(screen.getHeight()) / this->height);
 
 		return ratio * transform * p; // apply the ratio at the end so to take into account any size difference between canvas and screen
+	}
+
+	math::Point2d Canvas::toViewportCoords(math::Point2d p, Camera camera)
+	{
+		// as both the canvas and the viewport coordinate systems are conveniently defined to "match", the only thing we need to
+		// take into account is the difference in scale between canvas and viewport, given the viewport is measured in world units
+		// (e.g.: Vw=Vh=1 commonly used) and the canvas is measured in pixels (e.g.: Cx=1920, Cy=1080). basically, we need to "divide"
+		// the viewport in the same amount of pixels than the canvas, to get the corresponding canvas pixel into world space coordinates
+
+		math::Scale2d ratio = math::Scale2d(camera.getViewport().getWidth() / this->width, camera.getViewport().getHeight() / this->height);
+
+		return ratio * p; // FIXME: we need to find a workaround to retur not a Point2d (int coords) but a floating-point point (e.g.: make Point2d a template class)
 	}
 
 	math::Point2d* Canvas::getPoint(int x, int y)

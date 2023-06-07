@@ -28,10 +28,13 @@
     <ClCompile Include="src\objects\intersections\rayintersectioninfo.cpp" />
     <ClCompile Include="src\objects\sphere.cpp" />
     <ClCompile Include="src\ray.cpp" />
+    <ClCompile Include="src\renderer\camera.cpp" />
     <ClCompile Include="src\renderer\canvas.cpp" />
     <ClCompile Include="src\renderer\raytracer.cpp" />
     <ClCompile Include="src\renderer\screen.cpp" />
+    <ClCompile Include="src\renderer\viewport.cpp" />
     <ClCompile Include="src\tests\misc\test_utils.cpp" />
+    <ClCompile Include="src\tests\renderer\testsuite_camera.cpp" />
     <ClCompile Include="src\tests\renderer\testsuite_canvas.cpp" />
     <ClCompile Include="src\tests\renderer\testsuite_screen.cpp" />
     <ClCompile Include="src\tests\test.cpp" />
@@ -55,10 +58,13 @@
     <ClInclude Include="include\objects\intersections\rayintersectioninfo.h" />
     <ClInclude Include="include\objects\sphere.h" />
     <ClInclude Include="include\ray.h" />
+    <ClInclude Include="include\renderer\camera.h" />
     <ClInclude Include="include\renderer\canvas.h" />
     <ClInclude Include="include\renderer\raytracer.h" />
     <ClInclude Include="include\renderer\screen.h" />
+    <ClInclude Include="include\renderer\viewport.h" />
     <ClInclude Include="include\tests\misc\test_utils.h" />
+    <ClInclude Include="include\tests\renderer\testsuite_camera.h" />
     <ClInclude Include="include\tests\renderer\testsuite_canvas.h" />
     <ClInclude Include="include\tests\renderer\testsuite_screen.h" />
     <ClInclude Include="include\tests\test.h" />

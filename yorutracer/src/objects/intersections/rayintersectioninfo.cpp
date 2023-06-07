@@ -2,8 +2,8 @@
 
 #include <glm\glm.hpp>
 
-using namespace yorutracer;
-using namespace yorutracer::objects;
+using namespace yoru;
+using namespace yoru::objects;
 
 RayIntersectionInfo::RayIntersectionInfo()
 {

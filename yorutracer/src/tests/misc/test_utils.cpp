@@ -4,7 +4,7 @@
 
 #include "utils.h"
 
-using namespace yorutracer::utils;
+using namespace yoru::utils;
 
 namespace yorutracer {
 namespace tests {

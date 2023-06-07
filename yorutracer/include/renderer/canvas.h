@@ -9,6 +9,7 @@ namespace yoru {
 namespace renderer {
 
 	class Screen;
+	class Camera;
 
 	class Canvas
 	{
@@ -45,6 +46,9 @@ namespace renderer {
 		// screen "match" exactly (except for any difference in scale), regardless their relative position in the global 2D/UI world space coordinate system (z=0)
 		// use this function whenever just mapping a 2D point inside the canvas to a 2D point inside the screen is needed
 		math::Point2d toScreenCoords(math::Point2d p, Screen screen);
+
+		// takes a point in the canvas local coordinate system (pixel) to a point in the specified camera's viewport local coordinate system (world coordinate)
+		math::Point2d toViewportCoords(math::Point2d p, Camera camera);
 
 	private:
 		int width, height;

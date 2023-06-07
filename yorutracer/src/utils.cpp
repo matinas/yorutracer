@@ -4,7 +4,7 @@
 
 #include "utils.h"
 
-namespace yorutracer {
+namespace yoru {
 namespace utils {
 
 	glm::vec3 canvas_to_viewport(const glm::vec2 canvas_coord, const glm::vec2 canvas_size, const glm::vec2 viewport_size, float d)

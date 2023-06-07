@@ -37,35 +37,35 @@
     <Filter Include="src\math\transformation">
       <UniqueIdentifier>{aea08b57-e65a-4784-9620-9db78f2a2ab9}</UniqueIdentifier>
     </Filter>
-    <Filter Include="include\tests">
-      <UniqueIdentifier>{c6f9d686-64a8-4885-889a-8e05322c1652}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="include\tests\math">
-      <UniqueIdentifier>{66f785df-8791-4c13-b318-ff0dc0f5748f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="include\tests\renderer">
-      <UniqueIdentifier>{5e7cfc29-5747-4b32-84a4-57d483a35728}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="include\tests\misc">
-      <UniqueIdentifier>{9b334f8e-cd72-42de-ab60-908becaa43cc}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\tests">
-      <UniqueIdentifier>{c893c209-4f41-4635-a6f4-f71b2efabb0b}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\tests\math">
-      <UniqueIdentifier>{aa8f6fc2-7f1b-4f5e-823a-c8de984f011c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\tests\misc">
-      <UniqueIdentifier>{946952d0-8228-41a7-bb5d-eea4fa1324ba}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\tests\renderer">
-      <UniqueIdentifier>{5edd0889-857e-4b29-9281-8466fc800d67}</UniqueIdentifier>
-    </Filter>
     <Filter Include="include\math\matrix">
       <UniqueIdentifier>{4b42ce04-10b9-4c5a-8842-8906a8b240bf}</UniqueIdentifier>
     </Filter>
     <Filter Include="src\math\matrix">
       <UniqueIdentifier>{b3fb3ba5-bb18-4d99-9e32-8e58f877328f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\test">
+      <UniqueIdentifier>{c6f9d686-64a8-4885-889a-8e05322c1652}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\test\math">
+      <UniqueIdentifier>{66f785df-8791-4c13-b318-ff0dc0f5748f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\test\renderer">
+      <UniqueIdentifier>{5e7cfc29-5747-4b32-84a4-57d483a35728}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\test\misc">
+      <UniqueIdentifier>{9b334f8e-cd72-42de-ab60-908becaa43cc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\test">
+      <UniqueIdentifier>{c893c209-4f41-4635-a6f4-f71b2efabb0b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\test\math">
+      <UniqueIdentifier>{aa8f6fc2-7f1b-4f5e-823a-c8de984f011c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\test\misc">
+      <UniqueIdentifier>{946952d0-8228-41a7-bb5d-eea4fa1324ba}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\test\renderer">
+      <UniqueIdentifier>{5edd0889-857e-4b29-9281-8466fc800d67}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -121,19 +121,19 @@
       <Filter>src\renderer</Filter>
     </ClCompile>
     <ClCompile Include="src\tests\misc\test_utils.cpp">
-      <Filter>src\tests\misc</Filter>
+      <Filter>src\test\misc</Filter>
     </ClCompile>
     <ClCompile Include="src\tests\renderer\testsuite_screen.cpp">
-      <Filter>src\tests\renderer</Filter>
+      <Filter>src\test\renderer</Filter>
     </ClCompile>
     <ClCompile Include="src\tests\renderer\testsuite_canvas.cpp">
-      <Filter>src\tests\renderer</Filter>
+      <Filter>src\test\renderer</Filter>
     </ClCompile>
     <ClCompile Include="src\tests\testsuite.cpp">
-      <Filter>src\tests</Filter>
+      <Filter>src\test</Filter>
     </ClCompile>
     <ClCompile Include="src\tests\test.cpp">
-      <Filter>src\tests</Filter>
+      <Filter>src\test</Filter>
     </ClCompile>
     <ClCompile Include="src\math\matrix\glmmatrix3x3.cpp">
       <Filter>src\math\matrix</Filter>
@@ -146,6 +146,15 @@
     </ClCompile>
     <ClCompile Include="src\math\matrix\yorumatrix3x3.cpp">
       <Filter>src\math\matrix</Filter>
+    </ClCompile>
+    <ClCompile Include="src\renderer\camera.cpp">
+      <Filter>src\renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\tests\renderer\testsuite_camera.cpp">
+      <Filter>src\test\renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\renderer\viewport.cpp">
+      <Filter>src\renderer</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -198,19 +207,19 @@
       <Filter>include\renderer</Filter>
     </ClInclude>
     <ClInclude Include="include\tests\test.h">
-      <Filter>include\tests</Filter>
+      <Filter>include\test</Filter>
     </ClInclude>
     <ClInclude Include="include\tests\testsuite.h">
-      <Filter>include\tests</Filter>
+      <Filter>include\test</Filter>
     </ClInclude>
     <ClInclude Include="include\tests\misc\test_utils.h">
-      <Filter>include\tests\misc</Filter>
+      <Filter>include\test\misc</Filter>
     </ClInclude>
     <ClInclude Include="include\tests\renderer\testsuite_screen.h">
-      <Filter>include\tests\renderer</Filter>
+      <Filter>include\test\renderer</Filter>
     </ClInclude>
     <ClInclude Include="include\tests\renderer\testsuite_canvas.h">
-      <Filter>include\tests\renderer</Filter>
+      <Filter>include\test\renderer</Filter>
     </ClInclude>
     <ClInclude Include="include\math\matrix\glmmatrix3x3.h">
       <Filter>include\math\matrix</Filter>
@@ -223,6 +232,15 @@
     </ClInclude>
     <ClInclude Include="include\math\matrix\yorumatrix3x3.h">
       <Filter>include\math\matrix</Filter>
+    </ClInclude>
+    <ClInclude Include="include\renderer\camera.h">
+      <Filter>include\renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="include\tests\renderer\testsuite_camera.h">
+      <Filter>include\test\renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="include\renderer\viewport.h">
+      <Filter>include\renderer</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

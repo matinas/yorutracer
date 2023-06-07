@@ -5,7 +5,7 @@
 
 #include "ray.h"
 
-namespace yorutracer {
+namespace yoru {
 	namespace objects {
 
 class Sphere;
