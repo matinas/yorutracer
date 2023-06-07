@@ -98,17 +98,11 @@ namespace renderer {
 		setPositiveNumericSetting(this->near, near, DefaultNearPlane, NAMEOF(near));
 		setPositiveNumericSetting(this->far, far, DefaultFarPlane, NAMEOF(far));
 
-		std::cout << "Viewport trying to set is (" << viewport.getWidth() << ", " << viewport.getHeight() << ")" << '\n';
-
 		this->viewport = Viewport(viewport.getWidth() <= 0 ? Camera::DefaultViewportSize : viewport.getWidth(),
 								  viewport.getHeight() <= 0 ? Camera::DefaultViewportSize : viewport.getHeight());
 
-		std::cout << "Viewport to actually be set is (" << this->viewport.getWidth() << ", " << this->viewport.getHeight() << ")" << '\n';
-
 		this->fovh = calculateFOV(near, this->viewport, FOVType::FOVH);
-		std::cout << "FOVH is " << this->fovh << '\n';
 		this->fovv = calculateFOV(near, this->viewport, FOVType::FOVV);
-		std::cout << "FOVV is " << this->fovv << '\n';
 	}
 
 	void setPositiveNumericSetting(float& setting, float value, float default, std::string name)

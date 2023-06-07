@@ -154,10 +154,10 @@ namespace test {
 			assert(camera.getOrigin().getX() == expectedOrigin.getX() && camera.getOrigin().getY() == expectedOrigin.getY() && camera.getOrigin().getZ() == expectedOrigin.getZ() && "The camera has the wrong origin point");
 			assert(camera.getUp().getX() == expectedUp.getX() && camera.getUp().getY() == expectedUp.getY() && camera.getUp().getZ() == expectedUp.getZ() && "The camera has the wrong up vector");
 			assert(camera.getForward().getX() == expectedForward.getX() && camera.getForward().getY() == expectedForward.getY() && camera.getForward().getZ() == expectedForward.getZ() && "The camera has the wrong forward vector");
-			assert(yoru::utils::almostEqual(camera.getNear(), expectedNear, 0.01f) && "The camera has the wrong near plane distance");
-			assert(yoru::utils::almostEqual(camera.getFar(), expectedFar, 0.01) && "The camera has the wrong far plane distance");
-			assert(yoru::utils::almostEqual(camera.getFovH(), expectedFovH, 0.01) && "The camera has the wrong horizontal FOV");
-			assert(yoru::utils::almostEqual(camera.getFovV(), expectedFovV, 0.01) && "The camera has the wrong vertical FOV");
+			assert(utils::almostEqual(camera.getNear(), expectedNear, 0.01f) && "The camera has the wrong near plane distance");
+			assert(utils::almostEqual(camera.getFar(), expectedFar, 0.01) && "The camera has the wrong far plane distance");
+			assert(utils::almostEqual(camera.getFovH(), expectedFovH, 0.01) && "The camera has the wrong horizontal FOV");
+			assert(utils::almostEqual(camera.getFovV(), expectedFovV, 0.01) && "The camera has the wrong vertical FOV");
 		}
 
 		void checkViewport_createCameraFromViewport_test(renderer::Camera camera, float expectedFovH, float expectedFovV)
@@ -165,8 +165,8 @@ namespace test {
 			std::cout << "The horizontal FOV for the camera is " << camera.getFovH() << "\n";
 			std::cout << "The vertical FOV for the camera is " << camera.getFovV() << "\n";
 
-			bool fovHCheck = yoru::utils::almostEqual(camera.getFovH(), expectedFovH, 0.01);
-			bool fovVCheck = yoru::utils::almostEqual(camera.getFovV(), expectedFovV, 0.01);
+			bool fovHCheck = utils::almostEqual(camera.getFovH(), expectedFovH, 0.01);
+			bool fovVCheck = utils::almostEqual(camera.getFovV(), expectedFovV, 0.01);
 
 			assert(fovHCheck && "The camera has the wrong horizontal FOV");
 			assert(fovVCheck && "The camera has the wrong vertical FOV");
@@ -176,8 +176,8 @@ namespace test {
 		{
 			std::cout << std::setprecision(2) << "The viewport dimensions are " << camera.getViewport().getWidth() << "x" << camera.getViewport().getHeight() << "\n";
 
-			bool widthCheck = yoru::utils::almostEqual(camera.getViewport().getWidth(), expectedViewport.getWidth(), 0.01);
-			bool heightCheck = yoru::utils::almostEqual(camera.getViewport().getHeight(), expectedViewport.getHeight(), 0.01);
+			bool widthCheck = utils::almostEqual(camera.getViewport().getWidth(), expectedViewport.getWidth(), 0.01);
+			bool heightCheck = utils::almostEqual(camera.getViewport().getHeight(), expectedViewport.getHeight(), 0.01);
 
 			assert(widthCheck && "The camera has the wrong viewport width");
 			assert(heightCheck && "The camera has the wrong viewport height");

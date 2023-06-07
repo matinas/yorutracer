@@ -20,15 +20,15 @@ namespace renderer {
 		// creates a canvas with a custom center relative to the global 2D/UI world space coordinate system origin which is at (0,0)
 		// the origin of the canvas by (our) convention is at the center of the rectangle defined by width/height
 		// starting from the origin, x goes right and y goes up, in the same way as the global 2D/UI world space coordinate system (z=0)
-		Canvas(int width, int height, math::Point2d center);
+		Canvas(int width, int height, math::Point2d<int> center);
 
 		~Canvas();
 
 		int getWidth();
 		int getHeight();
 
-		math::Point2d getCenter();
-		math::Point2d* getPoint(int x, int y);
+		math::Point2d<int> getCenter();
+		math::Point2d<int>* getPoint(int x, int y);
 
 		// the returned transformation allows to take a point in the canvas local coordinate system to
 		// a point in the global 2D/UI world space coordinate system (z=0) upon which the canvas is defined
@@ -40,19 +40,19 @@ namespace renderer {
 
 		// takes a point in the canvas local coordinate system to a point in the specified screen local coordinate system,
 		// assuming both coordinate systems are custom-positioned in relation to the global 2D/UI world space coordinate system (z=0)
-		math::Point2d toScreenWorldCoords(math::Point2d p, Screen screen);
+		math::Point2d<int> toScreenWorldCoords(math::Point2d<int> p, Screen screen);
 
 		// takes a point in the canvas local coordinate system to a point in the specified screen local coordinate system, assuming both the canvas and the
 		// screen "match" exactly (except for any difference in scale), regardless their relative position in the global 2D/UI world space coordinate system (z=0)
 		// use this function whenever just mapping a 2D point inside the canvas to a 2D point inside the screen is needed
-		math::Point2d toScreenCoords(math::Point2d p, Screen screen);
+		math::Point2d<int> toScreenCoords(math::Point2d<int> p, Screen screen);
 
 		// takes a point in the canvas local coordinate system (pixel) to a point in the specified camera's viewport local coordinate system (world coordinate)
-		math::Point2d toViewportCoords(math::Point2d p, Camera camera);
+		math::Point2d<float> toViewportCoords(math::Point2d<int> p, Camera camera);
 
 	private:
 		int width, height;
-		math::Point2d center;
+		math::Point2d<int> center;
 		math::Affine2d canvasToWorldTransform, worldToCanvasTransform;
 		
 		math::Affine2d getWorldTransform();

@@ -34,12 +34,20 @@ namespace math {
 		return Point3d(mat.getRow(0)*p, mat.getRow(1)*p, mat.getRow(2)*p);
 	}
 
-	Point2d operator*(const Matrix3x3& mat, const Point2d& p)
+	Point2d<int> operator*(const Matrix3x3& mat, const Point2d<int>& p)
 	{
 		Point3d point = Point3d(static_cast<float>(p.getX()), static_cast<float>(p.getY()), 1.0f);
 		Point3d prod = mat * point;
 
-		return Point2d(static_cast<int>(prod.getX()), static_cast<int>(prod.getY()));
+		return Point2d<int>(static_cast<int>(prod.getX()), static_cast<int>(prod.getY()));
+	}
+
+	Point2d<float> operator*(const Matrix3x3& mat, const Point2d<float>& p)
+	{
+		Point3d point = Point3d(static_cast<float>(p.getX()), static_cast<float>(p.getY()), 1.0f);
+		Point3d prod = mat * point;
+
+		return Point2d<float>(prod.getX(), prod.getY());
 	}
 
 	bool operator==(const Matrix3x3& mat1, const Matrix3x3& mat2)

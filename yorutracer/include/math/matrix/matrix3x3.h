@@ -27,7 +27,8 @@ namespace math
 		friend Matrix3x3* operator*(const Matrix3x3& mat1, const Matrix3x3& mat2);
 		friend Matrix3x3* operator+(const Matrix3x3& mat1, const Matrix3x3& mat2);
 		friend Point3d operator*(const Matrix3x3& mat, const Point3d& p);
-		friend Point2d operator*(const Matrix3x3& mat, const Point2d& p);
+		friend Point2d<int> operator*(const Matrix3x3& mat, const Point2d<int>& p);
+		friend Point2d<float> operator*(const Matrix3x3& mat, const Point2d<float>& p);
 		friend bool operator==(const Matrix3x3& mat1, const Matrix3x3& mat2);
 
 		static Matrix3x3* const identity;

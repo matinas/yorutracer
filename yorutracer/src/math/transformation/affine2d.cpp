@@ -86,7 +86,7 @@ namespace math {
 		return Affine2d((*t1.matrix) * (*t2.matrix));
 	}
 
-	Point2d operator*(const Affine2d& t, const Point2d& p)
+	Point2d<int> operator*(const Affine2d& t, const Point2d<int>& p)
 	{
 		return (*t.matrix) * p;
 	}

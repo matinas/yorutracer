@@ -18,6 +18,7 @@ namespace test {
 		void checkPointScreenCoords_origin();
 		void checkPointScreenCoords_notorigin();
 		void checkPointScreenCoords_differentScale();
+		void checkPointViewportCoords();
 	}
 
 	class TestSuiteCanvas : public TestSuite

@@ -13,19 +13,19 @@ namespace renderer {
 	{
 		this->width = 800;
 		this->height = 600;
-		this->center = math::Point2d(0, 0); // when not specified, the center of the canvas matches the origin (0,0) of the global 2D/UI world space coordinates
+		this->center = math::Point2d<int>(0, 0); // when not specified, the center of the canvas matches the origin (0,0) of the global 2D/UI world space coordinates
 
 		initTransforms();
 	}
 
 	Canvas::Canvas(int width, int height) : width(width), height(height)
 	{
-		this->center = math::Point2d(0, 0);
+		this->center = math::Point2d<int>(0, 0);
 
 		initTransforms();
 	}
 
-	Canvas::Canvas(int width, int height, math::Point2d center) : width(width), height(height), center(center)
+	Canvas::Canvas(int width, int height, math::Point2d<int> center) : width(width), height(height), center(center)
 	{
 		initTransforms();
 	}
@@ -55,7 +55,7 @@ namespace renderer {
 		return this->height;
 	}
 
-	math::Point2d Canvas::getCenter()
+	math::Point2d<int> Canvas::getCenter()
 	{
 		return this->center;
 	}
@@ -77,12 +77,12 @@ namespace renderer {
 		return canvasToScreen;
 	}
 
-	math::Point2d Canvas::toScreenWorldCoords(math::Point2d p, Screen screen)
+	math::Point2d<int> Canvas::toScreenWorldCoords(math::Point2d<int> p, Screen screen)
 	{
 		return getCanvasToScreenWorldTransform(screen) * p;
 	}
 
-	math::Point2d Canvas::toScreenCoords(math::Point2d p, Screen screen)
+	math::Point2d<int> Canvas::toScreenCoords(math::Point2d<int> p, Screen screen)
 	{
 		// we know that Pc=(100,100) should map to Ps=(200,0), and Pc'=(100,-100) to Ps'(200,200) (Pc=canvas point, Ps=screen point)
 		// so we need to find the matrix M so that M*Pc=Ps and M*Pc'=Ps'
@@ -103,7 +103,7 @@ namespace renderer {
 		return ratio * transform * p; // apply the ratio at the end so to take into account any size difference between canvas and screen
 	}
 
-	math::Point2d Canvas::toViewportCoords(math::Point2d p, Camera camera)
+	math::Point2d<float> Canvas::toViewportCoords(math::Point2d<int> p, Camera camera)
 	{
 		// as both the canvas and the viewport coordinate systems are conveniently defined to "match", the only thing we need to
 		// take into account is the difference in scale between canvas and viewport, given the viewport is measured in world units
@@ -111,11 +111,12 @@ namespace renderer {
 		// the viewport in the same amount of pixels than the canvas, to get the corresponding canvas pixel into world space coordinates
 
 		math::Scale2d ratio = math::Scale2d(camera.getViewport().getWidth() / this->width, camera.getViewport().getHeight() / this->height);
+		math::Point2d<float> pFP = math::Point2d<float>(static_cast<float>(p.getX()), static_cast<float>(p.getY()));
 
-		return ratio * p; // FIXME: we need to find a workaround to retur not a Point2d (int coords) but a floating-point point (e.g.: make Point2d a template class)
+		return ratio * pFP;
 	}
 
-	math::Point2d* Canvas::getPoint(int x, int y)
+	math::Point2d<int>* Canvas::getPoint(int x, int y)
 	{
 		float halfWidth = width / 2.0f;
 		float halfHeight = height / 2.0f;
@@ -127,6 +128,6 @@ namespace renderer {
 			return NULL;
 		}
 
-		return new math::Point2d(x, y);
+		return new math::Point2d<int>(x, y);
 	}
 }}
