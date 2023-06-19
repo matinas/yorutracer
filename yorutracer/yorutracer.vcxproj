@@ -25,12 +25,12 @@
     <ClCompile Include="src\math\transformation\translation2d.cpp" />
     <ClCompile Include="src\math\vector2d.cpp" />
     <ClCompile Include="src\math\vector3d.cpp" />
-    <ClCompile Include="src\objects\intersections\rayintersectioninfo.cpp" />
     <ClCompile Include="src\objects\sphere.cpp" />
-    <ClCompile Include="src\ray.cpp" />
     <ClCompile Include="src\renderer\camera.cpp" />
     <ClCompile Include="src\renderer\canvas.cpp" />
-    <ClCompile Include="src\renderer\raytracer.cpp" />
+    <ClCompile Include="src\renderer\raytracer\ray.cpp" />
+    <ClCompile Include="src\renderer\raytracer\rayintersectioninfo.cpp" />
+    <ClCompile Include="src\renderer\raytracer\raytracer.cpp" />
     <ClCompile Include="src\renderer\screen.cpp" />
     <ClCompile Include="src\renderer\viewport.cpp" />
     <ClCompile Include="src\tests\misc\test_utils.cpp" />
@@ -39,7 +39,8 @@
     <ClCompile Include="src\tests\renderer\testsuite_screen.cpp" />
     <ClCompile Include="src\tests\test.cpp" />
     <ClCompile Include="src\tests\testsuite.cpp" />
-    <ClCompile Include="src\utils.cpp" />
+    <ClCompile Include="src\utils\timer.cpp" />
+    <ClCompile Include="src\utils\utils.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\math\matrix\glmmatrix3x3.h" />
@@ -55,12 +56,12 @@
     <ClInclude Include="include\math\transformation\translation2d.h" />
     <ClInclude Include="include\math\vector2d.h" />
     <ClInclude Include="include\math\vector3d.h" />
-    <ClInclude Include="include\objects\intersections\rayintersectioninfo.h" />
     <ClInclude Include="include\objects\sphere.h" />
-    <ClInclude Include="include\ray.h" />
     <ClInclude Include="include\renderer\camera.h" />
     <ClInclude Include="include\renderer\canvas.h" />
-    <ClInclude Include="include\renderer\raytracer.h" />
+    <ClInclude Include="include\renderer\raytracer\ray.h" />
+    <ClInclude Include="include\renderer\raytracer\rayintersectioninfo.h" />
+    <ClInclude Include="include\renderer\raytracer\raytracer.h" />
     <ClInclude Include="include\renderer\screen.h" />
     <ClInclude Include="include\renderer\viewport.h" />
     <ClInclude Include="include\tests\misc\test_utils.h" />
@@ -69,7 +70,8 @@
     <ClInclude Include="include\tests\renderer\testsuite_screen.h" />
     <ClInclude Include="include\tests\test.h" />
     <ClInclude Include="include\tests\testsuite.h" />
-    <ClInclude Include="include\utils.h" />
+    <ClInclude Include="include\utils\timer.h" />
+    <ClInclude Include="include\utils\utils.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{E7F60CD2-A08F-4F0C-8578-911900C2D063}</ProjectGuid>

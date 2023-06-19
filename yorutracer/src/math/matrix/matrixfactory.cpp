@@ -21,7 +21,7 @@ namespace math {
 		}
 	}
 
-	Matrix3x3* MatrixFactory::getMatrix(Vector3d row0, Vector3d row1, Vector3d row2)
+	Matrix3x3* MatrixFactory::getMatrix(const Vector3d& row0, const Vector3d& row1, const Vector3d& row2)
 	{
 		if (USE_GLM)
 		{

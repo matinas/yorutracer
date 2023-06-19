@@ -36,6 +36,11 @@ namespace math {
 		return Transform2d((*t1.matrix) * (*t2.matrix));
 	}
 
+	Point3d operator*(const Transform2d& t, const Point3d& p)
+	{
+		return (*t.matrix) * p;
+	}
+
 	Point2d<int> operator*(const Transform2d& t, const Point2d<int>& p)
 	{
 		return (*t.matrix) * p;

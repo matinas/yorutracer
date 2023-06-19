@@ -1,8 +1,8 @@
-#include <glm/glm.hpp>
-#include <glm/mat2x2.hpp>
+#include <glm\glm.hpp>
+#include <glm\mat2x2.hpp>
 #include <iostream>
 
-#include "utils.h"
+#include "utils\utils.h"
 
 using namespace yoru::utils;
 

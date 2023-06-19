@@ -6,7 +6,7 @@
 #include "tests\renderer\testsuite_camera.h"
 #include "renderer\camera.h"
 #include "renderer\viewport.h"
-#include "utils.h"
+#include "utils\utils.h"
 
 namespace yoru {
 namespace test {

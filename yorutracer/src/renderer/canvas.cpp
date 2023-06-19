@@ -15,17 +15,20 @@ namespace renderer {
 		this->height = 600;
 		this->center = math::Point2d<int>(0, 0); // when not specified, the center of the canvas matches the origin (0,0) of the global 2D/UI world space coordinates
 
+		this->halfWidth = static_cast<float>(this->width*0.5f);
+		this->halfHeight = static_cast<float>(this->height*0.5f);
+
 		initTransforms();
 	}
 
-	Canvas::Canvas(int width, int height) : width(width), height(height)
+	Canvas::Canvas(int width, int height) : width(width), height(height), halfWidth(static_cast<float>(width*0.5f)), halfHeight(static_cast<float>(height*0.5f))
 	{
 		this->center = math::Point2d<int>(0, 0);
 
 		initTransforms();
 	}
 
-	Canvas::Canvas(int width, int height, math::Point2d<int> center) : width(width), height(height), center(center)
+	Canvas::Canvas(int width, int height, math::Point2d<int> center) : width(width), height(height), halfWidth(static_cast<float>(width*0.5f)), halfHeight(static_cast<float>(height*0.5f)), center(center)
 	{
 		initTransforms();
 	}
@@ -34,6 +37,12 @@ namespace renderer {
 	{
 		canvasToWorldTransform = getWorldTransform();
 		worldToCanvasTransform = canvasToWorldTransform.inverse();
+
+		// cache the base of the screen coords transform so we don't need to calculate it each time we make a call
+		// to toScreenCoords (which is quite often, as we are calling it for each pixel when rendering via raytracing)
+		math::Scale2d mirror = math::Scale2d(1.0f, -1.0f);
+		math::Translation2d translation = math::Translation2d(halfWidth, halfHeight);
+		screenCoordsTransform = math::Affine2d(&mirror, &translation);
 	}
 
 	Canvas::~Canvas()
@@ -93,34 +102,40 @@ namespace renderer {
 		// we can easily resolve it to get: Sx=1, Sy=-1, Tx=100 (Cw/2), and Ty=100 (Ch/2)
 		// then, the transformation that maps a screen point to a canvas point is T*S
 
-		math::Scale2d mirror = math::Scale2d(1.0f, -1.0f);
-		math::Translation2d translation = math::Translation2d(static_cast<float>(width*0.5f), static_cast<float>(height*0.5f));
+		if ((screen.getWidth() != this->width) || (screen.getHeight() != this->height)) // avoids processing ratio if screen and canvas are the same size (commonly the case!)
+		{
+			math::Scale2d ratio = math::Scale2d(static_cast<float>(screen.getWidth()) / this->width, static_cast<float>(screen.getHeight()) / this->height);
 
-		math::Affine2d transform = math::Affine2d(nullptr, &mirror, &translation);
-
-		math::Scale2d ratio = math::Scale2d(static_cast<float>(screen.getWidth()) / this->width, static_cast<float>(screen.getHeight()) / this->height);
-
-		return ratio * transform * p; // apply the ratio at the end so to take into account any size difference between canvas and screen
+			return ratio * screenCoordsTransform * p; // apply the ratio at the end so to take into account any size difference between canvas and screen
+		}
+		else
+		{
+			return screenCoordsTransform * p;
+		}
 	}
 
-	math::Point2d<float> Canvas::toViewportCoords(math::Point2d<int> p, Camera camera)
+	math::Point3d Canvas::toViewportCoords(math::Point2d<int> p, Camera camera)
 	{
 		// as both the canvas and the viewport coordinate systems are conveniently defined to "match", the only thing we need to
 		// take into account is the difference in scale between canvas and viewport, given the viewport is measured in world units
 		// (e.g.: Vw=Vh=1 commonly used) and the canvas is measured in pixels (e.g.: Cx=1920, Cy=1080). basically, we need to "divide"
 		// the viewport in the same amount of pixels than the canvas, to get the corresponding canvas pixel into world space coordinates
 
-		math::Scale2d ratio = math::Scale2d(camera.getViewport().getWidth() / this->width, camera.getViewport().getHeight() / this->height);
-		math::Point2d<float> pFP = math::Point2d<float>(static_cast<float>(p.getX()), static_cast<float>(p.getY()));
+		renderer::Viewport viewport = camera.getViewport();
+		math::Point3d pFP = math::Point3d(static_cast<float>(p.getX()), static_cast<float>(p.getY()), camera.getNear());
 
-		return ratio * pFP;
+		if ((viewport.getWidth() != this->width) || (viewport.getHeight() != this->height)) // avoids processing ratio if viewport and canvas are the same size (not commonly the case though)
+		{
+			math::Scale2d ratio = math::Scale2d(viewport.getWidth() / this->width, viewport.getHeight() / this->height);
+
+			return ratio * pFP;
+		}
+
+		return pFP;
 	}
 
 	math::Point2d<int>* Canvas::getPoint(int x, int y)
 	{
-		float halfWidth = width / 2.0f;
-		float halfHeight = height / 2.0f;
-
 		if (x < -halfWidth || y < -halfHeight || x > halfWidth || y > halfHeight)
 		{
 			std::cout << "There's no point in the canvas at (" << x << "," << y << ")\n";

@@ -6,7 +6,7 @@
 #include "renderer\canvas.h"
 #include "renderer\screen.h"
 #include "renderer\camera.h"
-#include "utils.h"
+#include "utils\utils.h"
 
 namespace yoru {
 namespace test {
@@ -301,7 +301,7 @@ namespace test {
 		{
 			assert(point != NULL && "Point is not a valid point in the canvas");
 
-			math::Point2d<float> viewportPoint = canvas.toViewportCoords(*point, camera);
+			math::Point3d viewportPoint = canvas.toViewportCoords(*point, camera);
 
 			std::cout << "The canvas point is (" << point->getX() << "," << point->getY() << ")\n";
 			std::cout << "The corresponding viewport point is (" << viewportPoint.getX() << "," << viewportPoint.getY() << ")\n";

@@ -1,30 +1,76 @@
 #define DEBUG 0
 
 #include <iostream>
-#include <FreeImage.h>
+#include <cstdio>
+#include <string>
 
-#include "utils.h"
-#include "objects/sphere.h"
-#include "objects/intersections/rayintersectioninfo.h"
-#include "ray.h"
+#include "utils\utils.h"
+#include "utils\timer.h"
 
 #include "renderer\canvas.h"
 #include "renderer\screen.h"
 #include "renderer\camera.h"
+#include "renderer\raytracer\raytracer.h"
 
 #include "tests\renderer\testsuite_canvas.h"
 #include "tests\renderer\testsuite_screen.h"
 #include "tests\renderer\testsuite_camera.h"
 #include "tests\misc\test_utils.h"
 
-RGBQUAD rgb_black = {0,0,0};
-RGBQUAD rgb_blue = {255,0,0};
-
 using namespace yoru;
-using namespace yoru::objects;
 using namespace yoru::utils;
 
-int main(char* argv, int argc)
+enum RunMode
+{
+	RENDER = 0,
+	TEST = 1,
+	NONE = -1,	
+};
+
+void render();
+void runTestSuites();
+
+int main(int argc, char* argv[])
+{
+	RunMode mode = RunMode::NONE;
+    if (argc > 1)
+	{
+		mode = static_cast<RunMode>(std::stoi(argv[1]));
+	}
+
+	switch (mode)
+	{
+		case RunMode::RENDER:
+			render();
+			break;
+		case RunMode::TEST:
+			runTestSuites();
+			break;
+		default:
+			std::cout << "Trying to run with an invalid run mode, please verify\n";
+	}
+
+	return EXIT_SUCCESS;
+}
+
+void render()
+{
+	renderer::Canvas canvas = renderer::Canvas(CANVAS_WIDTH, CANVAS_HEIGHT);
+	renderer::Screen screen = renderer::Screen(IMAGE_WIDTH, IMAGE_HEIGHT);
+	renderer::Camera camera = renderer::Camera(math::Point3d(0.f,0.f,0.f), math::Vector3d(0.f,1.f,0.f), math::Vector3d(0.f,0.f,1.f), 1, 100, renderer::Viewport(1.0,1.0));
+
+	renderer::Raytracer raytracer = renderer::Raytracer(canvas, screen, camera);
+
+	Timer timer = Timer();
+	timer.start();
+
+	raytracer.render();
+
+	timer.stop();
+	std::cout << "The rendering process took " << timer.getElapsedTime(Timer::TimeUnit::MILISECONDS) << "ms to complete\n";
+}
+
+void runTestSuites()
 {
 	yoru::test::TestSuiteCanvas testCanvas("TestSuiteCanvas");
 	testCanvas.run();
@@ -34,62 +80,4 @@ int main(char* argv, int argc)
 
 	yoru::test::TestSuiteCamera testCamera("TestSuiteCamera");
 	testCamera.run();
-
-	return EXIT_SUCCESS;
-
-	//////////////////////////////////////////
-
-	FreeImage_Initialise();
-
-	FIBITMAP *bitmap = FreeImage_Allocate(IMAGE_HEIGHT, IMAGE_WIDTH, 24);
-
-	if (bitmap)
-	{
-		std::cout << "Bitmap successfully created" << std::endl;
-	}
-	else
-	{
-		std::cout << "There was a problem generating bitmap" << std::endl;
-
-		return -1;
-	}
-
-	Sphere sphere = Sphere(glm::vec3(0.f,0.f,3.0f),1.0f);
-	RGBQUAD rgb;
-
-	for (int i=-CANVAS_WIDTH/2; i<CANVAS_WIDTH/2; ++i)
-	{
-		for (int j=-CANVAS_HEIGHT/2; j<CANVAS_HEIGHT/2; ++j)
-		{
-			glm::vec3 viewport_point = canvas_to_viewport(glm::vec2(i,j), glm::vec2(CANVAS_WIDTH,CANVAS_HEIGHT), glm::vec2(1,1), 1.f);
-			if (DEBUG) std::cout << "Viewport point: (" << viewport_point.x << "," << viewport_point.y << "," << viewport_point.z << ")" << std::endl;
-
-			glm::vec2 screen = canvas_to_screen_custom(glm::vec2(i,j), glm::vec2(CANVAS_WIDTH,CANVAS_HEIGHT));
-
-			Ray ray = Ray(glm::vec3(0.f), viewport_point);
-			RayIntersectionInfo ray_sphere = sphere.intersect(ray);
-
-			if (ray_sphere.exist())
-			{
-				glm::vec3* point = ray_sphere.get_nearest();
-
-				rgb = rgb_blue;
-			}
-			else // there's no interesection
-			{
-				rgb = rgb_black;
-			}
-
-			FreeImage_SetPixelColor(bitmap, screen.x, screen.y, &rgb);
-		}
-	}
-	
-	if (FreeImage_Save(FIF_JPEG, bitmap, "output.jpeg", 0))
-	{
-		std::cout << "Bitmap successfully saved!" << std::endl;
-
-		FreeImage_Unload(bitmap);
-	}
-
-	return EXIT_SUCCESS;
 }

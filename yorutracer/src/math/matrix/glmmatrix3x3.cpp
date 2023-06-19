@@ -7,7 +7,7 @@ namespace math {
 	{
 	}
 
-	GLMMatrix3x3::GLMMatrix3x3(glm::mat3x3 mat)
+	GLMMatrix3x3::GLMMatrix3x3(const glm::mat3x3& mat)
 	{
 		this->matrix = mat;
 	}
@@ -21,7 +21,7 @@ namespace math {
 							 item20, item21, item22);
 	}
 
-	GLMMatrix3x3::GLMMatrix3x3(Vector3d row0, Vector3d row1, Vector3d row2)
+	GLMMatrix3x3::GLMMatrix3x3(const Vector3d& row0, const Vector3d& row1, const Vector3d& row2)
 	{
 		glm::vec3 vrow0 = glm::vec3(row0.getX(), row0.getY(), row0.getZ());
 		glm::vec3 vrow1 = glm::vec3(row1.getX(), row1.getY(), row1.getZ());

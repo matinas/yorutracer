@@ -2,7 +2,7 @@
 #include <sstream>
 #include <glm\glm.hpp>
 
-#include "utils.h"
+#include "utils\utils.h"
 
 namespace yoru {
 namespace utils {

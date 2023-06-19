@@ -46,7 +46,7 @@ namespace renderer {
 		math::Translation2d translation = math::Translation2d(static_cast<float>(this->center.getX()), static_cast<float>(-this->center.getY()));
 		math::Scale2d mirror = math::Scale2d(1.0f, -1.0f);
 
-		return math::Affine2d(nullptr, &translation, &mirror);
+		return math::Affine2d(&translation, &mirror);
 	}
 
 	int Screen::getWidth()

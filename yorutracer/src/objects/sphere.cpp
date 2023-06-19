@@ -1,18 +1,19 @@
-#include <glm\glm.hpp>
+#include <math.h>
 
 #include "objects\sphere.h"
-#include "ray.h"
+#include "renderer\raytracer\ray.h"
+#include "utils\utils.h"
 
 using namespace yoru;
 using namespace yoru::objects;
 
 Sphere::Sphere()
 {
-	this->center = glm::vec3(0.f);
-	this->radius = 1;
+	this->center = math::Point3d(0.f,0.f,0.f);
+	this->radius = 1.f;
 }
 
-Sphere::Sphere(glm::vec3 center, float radius)
+Sphere::Sphere(const math::Point3d& center, float radius)
 {
 	this->center = center;
 	this->radius = radius;
@@ -22,52 +23,49 @@ Sphere::~Sphere()
 {
 }
 
-glm::vec3 Sphere::get_center()
+math::Point3d Sphere::getCenter() const
 {
 	return center;
 }
 
-float Sphere::get_radius()
+float Sphere::getRadius() const
 {
 	return radius;
 }
 
-RayIntersectionInfo Sphere::intersect(Ray ray)
+renderer::RayIntersectionInfo Sphere::intersect(Ray ray)
 {
-	RayIntersectionInfo intersection_info;
+	renderer::RayIntersectionInfo intersection_info;
 
-	glm::vec3 D = glm::normalize(ray.get_destination() - ray.get_origin());
-	glm::vec3 CO = ray.get_origin() - this->center;
-	float D_CO_dot = glm::dot(D,CO);
-	float CO_dot = glm::dot(CO,CO);
+	math::Vector3d D = ray.getDestination() - ray.getOrigin();
+	D.normalize();
+	math::Vector3d CO = ray.getOrigin() - this->center;
+	float D_CO_dot = D * CO;
+	float CO_dot = CO * CO;
 
-	float a = glm::dot(D,D);
+	float a = D * D;
 	float b = 2 * D_CO_dot;
-	float c = CO_dot - this->radius * this->radius;
+	float c = CO_dot - (this->radius * this->radius);
 
 	float det = b*b - 4*a*c;
 	if (det < 0)
 	{
-		intersection_info = RayIntersectionInfo(&ray, this, NULL);
+		intersection_info = renderer::RayIntersectionInfo(&ray, this, nullptr); // no real roots, so no intersection
 	}
 	else
 	{
-		int root_count = (det == 0) ? 1 : 2;
+		int root_count = (utils::almostEqual(det, 0.0, 0.001)) ? 1 : 2;
+		
+		math::Point3d* points = new math::Point3d[root_count];
 
-		float* roots = new float[root_count];
-		for (int i=0, j=1; i<root_count; ++i, j=j-2) // when there are two roots j takes values 1 and -1 (trick to use a generic formula below)
+		float denom = 1.f / 2*a;
+		for (int i=0, j=1; i<root_count; ++i, j=j-2) // little trick to use a generic formula below: when there are two roots, j takes values 1 and -1
 		{
-			roots[i] = (-b + j*sqrt(det)) / 2*a;
+			float root = (-b + j*sqrt(det)) * denom;
+			points[i] = ray.getOrigin() + (root * D);
 		}
 
-		glm::vec3* points = new glm::vec3[root_count];
-
-		for (int i=0; i<root_count; i++)
-		{
-			points[i] = ray.get_origin() + roots[i] * D;
-		}
-
-		intersection_info = RayIntersectionInfo(&ray, this, points);
+		intersection_info = renderer::RayIntersectionInfo(&ray, this, points);
 	}
 
 	return intersection_info;

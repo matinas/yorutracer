@@ -3,7 +3,7 @@
 #include <string>
 
 #include "renderer\camera.h"
-#include "utils.h"
+#include "utils\utils.h"
 
 namespace yoru {
 namespace renderer {

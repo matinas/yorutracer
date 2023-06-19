@@ -2,12 +2,6 @@
 
 #include "tests\testsuite.h"
 
-#include <algorithm>
-#include <cstdio>
-#include <cstring>
-#include <utility>
-#include <vector>
-
 namespace yoru {
 namespace test {
 

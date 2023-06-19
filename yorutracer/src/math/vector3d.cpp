@@ -1,4 +1,7 @@
+#include <math.h>
+
 #include "math\vector3d.h"
+#include "math\point3d.h"
 
 namespace yoru {
 namespace math {
@@ -35,32 +38,45 @@ namespace math {
 		return z;
 	}
 
-	float operator*(Vector3d v1, Vector3d v2)
+	float Vector3d::norm()
+	{
+		return sqrt(x*x+y*y+z*z);
+	}
+
+	void Vector3d::normalize()
+	{
+		float coef = 1/norm();
+		x *= coef;
+		y *= coef;
+		z *= coef;
+	}
+
+	float operator*(const Vector3d& v1, const Vector3d& v2)
 	{
 		return v1.getX()*v2.getX() + v1.getY()*v2.getY() + v1.getZ()*v2.getZ();
 	}
 
-	Vector3d operator+(Vector3d v1, Vector3d v2)
+	Vector3d operator+(const Vector3d& v1, const Vector3d& v2)
 	{
 		return Vector3d(v1.getX() + v2.getX(), v1.getY() + v2.getY(), v1.getZ() + v2.getZ());
 	}
 
-	Vector3d operator*(Vector3d v1, float f)
+	Vector3d operator*(const Vector3d& v1, float f)
 	{
 		return Vector3d(v1.getX()*f, v1.getY()*f, v1.getZ()*f);
 	}
 
-	Vector3d operator*(float f, Vector3d v1)
+	Vector3d operator*(float f, const Vector3d& v1)
 	{
 		return v1*f;
 	}
 
-	float operator*(Vector3d v, Point3d p)
+	float operator*(const Vector3d& v, const Point3d& p)
 	{
 		return v.getX()*p.getX() + v.getY()*p.getY() + v.getZ()*p.getZ();
 	}
 
-	bool operator==(Vector3d v1, Vector3d v2)
+	bool operator==(const Vector3d& v1, const Vector3d& v2)
 	{
 		return (v1.getX() == v2.getX())
 			&& (v1.getY() == v2.getY())

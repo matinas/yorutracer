@@ -1,30 +1,28 @@
 #ifndef SPHERE_H
 #define SPHERE_H
 
-#include <glm\vec3.hpp>
-
-#include "objects\intersections\rayintersectioninfo.h"
+#include "math\vector3d.h"
+#include "renderer\raytracer\rayintersectioninfo.h"
 
 namespace yoru {
-	namespace objects {
+namespace objects {
 
-class Sphere
-{
+	class Sphere
+	{
 	private:
-		glm::vec3 center;
+		math::Point3d center;
 		float radius;
 
 	public:
 		Sphere();
-		Sphere(glm::vec3 center, float radius);
+		Sphere(const math::Point3d& center, float radius);
 		~Sphere();
 
-		glm::vec3 get_center();
-		float get_radius();
+		math::Point3d getCenter() const;
+		float getRadius() const;
 		
-		RayIntersectionInfo intersect(Ray r);
-};
-	}
-}
+		renderer::RayIntersectionInfo intersect(const Ray r);
+	};
+}}
 
 #endif

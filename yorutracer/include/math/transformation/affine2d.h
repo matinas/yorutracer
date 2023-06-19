@@ -17,6 +17,8 @@ namespace math {
 		Affine2d(Matrix3x3* mat);
 		Affine2d(Rotation2d* rot, Translation2d* trans, Scale2d* scale);
 		Affine2d(Rotation2d* rot, Scale2d* scale, Translation2d* trans);
+		Affine2d(Translation2d* trans, Scale2d* scale);
+		Affine2d(Scale2d* scale, Translation2d* trans);
 		~Affine2d();
 
 		virtual Affine2d inverse();

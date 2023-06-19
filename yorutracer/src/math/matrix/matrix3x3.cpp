@@ -10,9 +10,12 @@ namespace math {
 
 	Matrix3x3* operator*(const Matrix3x3& mat1, const Matrix3x3& mat2)
 	{
-		Vector3d row0 = Vector3d(mat1.getRow(0)*mat2.getCol(0), mat1.getRow(0)*mat2.getCol(1), mat1.getRow(0)*mat2.getCol(2));
-		Vector3d row1 = Vector3d(mat1.getRow(1)*mat2.getCol(0), mat1.getRow(1)*mat2.getCol(1), mat1.getRow(1)*mat2.getCol(2));
-		Vector3d row2 = Vector3d(mat1.getRow(2)*mat2.getCol(0), mat1.getRow(2)*mat2.getCol(1), mat1.getRow(2)*mat2.getCol(2));
+		math::Vector3d mat1row0 = mat1.getRow(0); math::Vector3d mat1row1 = mat1.getRow(1); math::Vector3d mat1row2 = mat1.getRow(2);
+		math::Vector3d mat2col0 = mat2.getCol(0); math::Vector3d mat2col1 = mat2.getCol(1); math::Vector3d mat2col2 = mat2.getCol(2);
+
+		Vector3d row0 = Vector3d(mat1row0*mat2col0, mat1row0*mat2col1, mat1row0*mat2col2);
+		Vector3d row1 = Vector3d(mat1row1*mat2col0, mat1row1*mat2col1, mat1row1*mat2col2);
+		Vector3d row2 = Vector3d(mat1row2*mat2col0, mat1row2*mat2col1, mat1row2*mat2col2);
 
 		return MatrixFactory::getMatrix(row0, row1, row2);
 	}
@@ -44,7 +47,7 @@ namespace math {
 
 	Point2d<float> operator*(const Matrix3x3& mat, const Point2d<float>& p)
 	{
-		Point3d point = Point3d(static_cast<float>(p.getX()), static_cast<float>(p.getY()), 1.0f);
+		Point3d point = Point3d(p.getX(), p.getY(), 1.0f);
 		Point3d prod = mat * point;
 
 		return Point2d<float>(prod.getX(), prod.getY());

@@ -10,9 +10,6 @@
     <Filter Include="src\objects">
       <UniqueIdentifier>{571eb486-5f19-43c7-aeb3-e838e237adb5}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\objects\intersections">
-      <UniqueIdentifier>{e845a0c6-6d9e-4b74-9bf4-e957b4a802f8}</UniqueIdentifier>
-    </Filter>
     <Filter Include="src\math">
       <UniqueIdentifier>{ecd1ed4e-5567-46e6-9f91-9309ab41e7fb}</UniqueIdentifier>
     </Filter>
@@ -24,9 +21,6 @@
     </Filter>
     <Filter Include="include\objects">
       <UniqueIdentifier>{a19a2032-75d3-4960-8a74-f5ea049c74b3}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="include\objects\intersections">
-      <UniqueIdentifier>{fa41bb8a-ff38-4983-a9b9-08d02fcb2c66}</UniqueIdentifier>
     </Filter>
     <Filter Include="include\renderer">
       <UniqueIdentifier>{b1a7e70f-ee87-4cab-9747-cc4579f334fb}</UniqueIdentifier>
@@ -67,25 +61,31 @@
     <Filter Include="src\test\renderer">
       <UniqueIdentifier>{5edd0889-857e-4b29-9281-8466fc800d67}</UniqueIdentifier>
     </Filter>
+    <Filter Include="include\utils">
+      <UniqueIdentifier>{79d5f4da-4a4b-481e-b4c5-dd88dff45f4a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\utils">
+      <UniqueIdentifier>{d2c55f8a-146b-40ef-afa3-4a98c681e9eb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\renderer\raytracer">
+      <UniqueIdentifier>{a9ed5437-4cbb-4330-b4e9-10f89950c3ee}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\renderer\rasterizer">
+      <UniqueIdentifier>{061a3746-c17a-48ae-a0ca-4d7e6cbcc33e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\renderer\raytracer">
+      <UniqueIdentifier>{fb6a2728-d21d-48bc-9fec-2858c37fc9f5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\renderer\rasterizer">
+      <UniqueIdentifier>{f11218ba-feb1-49c1-aa7d-6f65350c4226}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="src\ray.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
     <ClCompile Include="src\objects\sphere.cpp">
       <Filter>src\objects</Filter>
-    </ClCompile>
-    <ClCompile Include="src\objects\intersections\rayintersectioninfo.cpp">
-      <Filter>src\objects\intersections</Filter>
-    </ClCompile>
-    <ClCompile Include="src\utils.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
-    <ClCompile Include="src\renderer\raytracer.cpp">
-      <Filter>src\renderer</Filter>
     </ClCompile>
     <ClCompile Include="src\math\transformation\affine2d.cpp">
       <Filter>src\math\transformation</Filter>
@@ -156,22 +156,25 @@
     <ClCompile Include="src\renderer\viewport.cpp">
       <Filter>src\renderer</Filter>
     </ClCompile>
+    <ClCompile Include="src\utils\utils.cpp">
+      <Filter>src\utils</Filter>
+    </ClCompile>
+    <ClCompile Include="src\utils\timer.cpp">
+      <Filter>src\utils</Filter>
+    </ClCompile>
+    <ClCompile Include="src\renderer\raytracer\raytracer.cpp">
+      <Filter>src\renderer\raytracer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\renderer\raytracer\ray.cpp">
+      <Filter>src\renderer\raytracer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\renderer\raytracer\rayintersectioninfo.cpp">
+      <Filter>src\renderer\raytracer</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="include\objects\intersections\rayintersectioninfo.h">
-      <Filter>include\objects\intersections</Filter>
-    </ClInclude>
     <ClInclude Include="include\objects\sphere.h">
       <Filter>include\objects</Filter>
-    </ClInclude>
-    <ClInclude Include="include\renderer\raytracer.h">
-      <Filter>include\renderer</Filter>
-    </ClInclude>
-    <ClInclude Include="include\utils.h">
-      <Filter>include</Filter>
-    </ClInclude>
-    <ClInclude Include="include\ray.h">
-      <Filter>include</Filter>
     </ClInclude>
     <ClInclude Include="include\math\transformation\affine2d.h">
       <Filter>include\math\transformation</Filter>
@@ -241,6 +244,21 @@
     </ClInclude>
     <ClInclude Include="include\renderer\viewport.h">
       <Filter>include\renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="include\utils\utils.h">
+      <Filter>include\utils</Filter>
+    </ClInclude>
+    <ClInclude Include="include\utils\timer.h">
+      <Filter>include\utils</Filter>
+    </ClInclude>
+    <ClInclude Include="include\renderer\raytracer\raytracer.h">
+      <Filter>include\renderer\raytracer</Filter>
+    </ClInclude>
+    <ClInclude Include="include\renderer\raytracer\ray.h">
+      <Filter>include\renderer\raytracer</Filter>
+    </ClInclude>
+    <ClInclude Include="include\renderer\raytracer\rayintersectioninfo.h">
+      <Filter>include\renderer\raytracer</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

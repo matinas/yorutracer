@@ -26,7 +26,9 @@ namespace math {
 		Matrix3x3 *rotM, *transM, *scaleM;
 		fillMatrices(rotM, transM, scaleM);
 
-		this->matrix = *((*rotM) * (*scaleM)) * (*transM);
+		// FIXME: this is not very performant, as we are multiplying by identity in vane when a specific transform is null as part of the constructor
+	    // Don't use this for now... it will be probably removed later and define specific constructor for each combination of transforms
+		this->matrix = *((*rotM) * (*scaleM)) * (*transM); 
 	}
 
 	Affine2d::Affine2d(Rotation2d* rot, Scale2d* scale, Translation2d* trans)
@@ -36,7 +38,22 @@ namespace math {
 		Matrix3x3 *rotM, *transM, *scaleM;
 		fillMatrices(rotM, transM, scaleM);
 
+		// FIXME: take into account the same as above
 		this->matrix = *((*rotM) * (*transM)) * (*scaleM);
+	}
+
+	Affine2d::Affine2d(Scale2d* scale, Translation2d* trans)
+	{
+		initTransforms(nullptr, trans, scale);
+
+		this->matrix = *this->translation->getMatrix() * *this->scale->getMatrix();
+	}
+
+	Affine2d::Affine2d(Translation2d* trans, Scale2d* scale)
+	{
+		initTransforms(nullptr, trans, scale);
+
+		this->matrix = *this->scale->getMatrix() * *this->translation->getMatrix();
 	}
 
 	void Affine2d::initTransforms(Rotation2d* rot, Translation2d* trans, Scale2d* scale)
@@ -55,6 +72,8 @@ namespace math {
 
 	Affine2d::~Affine2d()
 	{
+		// FIXME: not working for some reason...
+
 		// if (rotation) delete rotation;
 		// if (scale) delete scale;
 		// if (translation) delete translation;

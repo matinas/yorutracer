@@ -7,9 +7,7 @@ namespace math {
 	{
 		for (int i = 0; i < 3; ++i)
 			for (int j = 0; j < 3; ++j)
-			{
 				items[i][j] = 0.0f;
-			}
 	}
 
 	YoruMatrix3x3::YoruMatrix3x3(float item00, float item01, float item02,

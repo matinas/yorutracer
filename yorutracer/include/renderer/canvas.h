@@ -48,12 +48,12 @@ namespace renderer {
 		math::Point2d<int> toScreenCoords(math::Point2d<int> p, Screen screen);
 
 		// takes a point in the canvas local coordinate system (pixel) to a point in the specified camera's viewport local coordinate system (world coordinate)
-		math::Point2d<float> toViewportCoords(math::Point2d<int> p, Camera camera);
+		math::Point3d toViewportCoords(math::Point2d<int> p, Camera camera);
 
 	private:
-		int width, height;
+		int width, height, halfWidth, halfHeight;
 		math::Point2d<int> center;
-		math::Affine2d canvasToWorldTransform, worldToCanvasTransform;
+		math::Affine2d canvasToWorldTransform, worldToCanvasTransform, screenCoordsTransform;
 		
 		math::Affine2d getWorldTransform();
 		math::Affine2d getCanvasToScreenWorldTransform(Screen screen);
