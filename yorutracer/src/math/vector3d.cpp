@@ -51,6 +51,18 @@ namespace math {
 		z *= coef;
 	}
 
+	Vector3d Vector3d::cross(const Vector3d& v)
+	{
+		return Vector3d(this->getY()*v.getZ() - this->getZ()*v.getY(),
+						this->getZ()*v.getX() - this->getX()*v.getZ(),
+						this->getX()*v.getY() - this->getY()*v.getX());
+	}
+
+	float Vector3d::dot(const Vector3d& v)
+	{
+		return *this * v;
+	}
+
 	float operator*(const Vector3d& v1, const Vector3d& v2)
 	{
 		return v1.getX()*v2.getX() + v1.getY()*v2.getY() + v1.getZ()*v2.getZ();
@@ -71,6 +83,11 @@ namespace math {
 		return v1*f;
 	}
 
+	Vector3d operator-(const Vector3d& v)
+	{
+		return Vector3d(-v.getX(), -v.getY(), -v.getZ());
+	}
+
 	float operator*(const Vector3d& v, const Point3d& p)
 	{
 		return v.getX()*p.getX() + v.getY()*p.getY() + v.getZ()*p.getZ();
@@ -81,5 +98,12 @@ namespace math {
 		return (v1.getX() == v2.getX())
 			&& (v1.getY() == v2.getY())
 			&& (v1.getZ() == v2.getZ());
+	}
+
+	std::ostream& operator<<(std::ostream& out, const Vector3d& v)
+	{
+		out << "(" << v.getX() << ", " << v.getY() << ", " << v.getZ() << ")" << std::endl;
+
+		return out;
 	}
 }}

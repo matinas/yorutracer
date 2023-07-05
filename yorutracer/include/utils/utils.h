@@ -22,6 +22,9 @@
 #include <glm\vec3.hpp>
 #include <glm\mat2x2.hpp>
 #include <glm\mat3x3.hpp>
+#include <FreeImage.h>
+
+#include "math\point3d.h"
 
 namespace yoru {
 namespace utils {
@@ -49,6 +52,16 @@ namespace utils {
 	inline bool almostEqual(double a, double b, double epsilon)
 	{
 		return abs(a-b) <= epsilon;
+	}
+
+	inline RGBQUAD toRGBQUAD(const math::Point3d& p)
+	{
+		RGBQUAD rgb;
+		rgb.rgbRed = static_cast<BYTE>(p.getX() * 255);
+		rgb.rgbGreen = static_cast<BYTE>(p.getY() * 255);
+		rgb.rgbBlue = static_cast<BYTE>(p.getZ() * 255);
+
+		return rgb;
 	}
 }
 }

@@ -17,6 +17,13 @@ namespace math {
 		this->z = z;
 	}
 
+	Point3d::Point3d(const Point3d& p)
+	{
+		this->x = p.getX();
+		this->y = p.getY();
+		this->z = p.getZ();
+	}
+
 	Point3d::~Point3d()
 	{
 	}
@@ -41,6 +48,11 @@ namespace math {
 		return (*this - p).norm();
 	}
 
+	bool operator==(const Point3d& p1, const Point3d& p2)
+	{
+		return p1.getX() == p2.getX() && p1.getY() == p2.getY() && p1.getZ() == p2.getZ();
+	}
+
 	Vector3d operator-(const Point3d& p1, const Point3d& p2)
 	{
 		return Vector3d(p1.getX()-p2.getX(), p1.getY()-p2.getY(), p1.getZ()-p2.getZ());
@@ -49,5 +61,12 @@ namespace math {
 	Point3d operator+(const Point3d& p, const Vector3d& v)
 	{
 		return Point3d(p.getX()+v.getX(), p.getY()+v.getY(), p.getZ()+v.getZ());
+	}
+
+	std::ostream& operator<<(std::ostream& out, const Point3d& p)
+	{
+		out << "(" << p.getX() << ", " << p.getY() << ", " << p.getZ() << ")" << std::endl;
+
+		return out;
 	}
 }}

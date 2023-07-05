@@ -57,7 +57,9 @@ void render()
 {
 	renderer::Canvas canvas = renderer::Canvas(CANVAS_WIDTH, CANVAS_HEIGHT);
 	renderer::Screen screen = renderer::Screen(IMAGE_WIDTH, IMAGE_HEIGHT);
-	renderer::Camera camera = renderer::Camera(math::Point3d(0.f,0.f,0.f), math::Vector3d(0.f,1.f,0.f), math::Vector3d(0.f,0.f,1.f), 1, 100, renderer::Viewport(1.0,1.0));
+	renderer::Camera camera = renderer::Camera(math::Point3d(0.f,0.f,0.f), math::Vector3d(0.f,1.f,0.f), math::Vector3d(0.f,0.f,1.f), 1.f, 100, renderer::Viewport(1.0,1.0));
+
+	camera.lookAt(math::Point3d(0.0f,0.5f,1.f));
 
 	renderer::Raytracer raytracer = renderer::Raytracer(canvas, screen, camera);
 

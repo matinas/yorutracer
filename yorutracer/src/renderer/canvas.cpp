@@ -122,16 +122,16 @@ namespace renderer {
 		// the viewport in the same amount of pixels than the canvas, to get the corresponding canvas pixel into world space coordinates
 
 		renderer::Viewport viewport = camera.getViewport();
-		math::Point3d pFP = math::Point3d(static_cast<float>(p.getX()), static_cast<float>(p.getY()), camera.getNear());
+		math::Point3d point = math::Point3d(static_cast<float>(p.getX()), static_cast<float>(p.getY()), camera.getNear());
 
 		if ((viewport.getWidth() != this->width) || (viewport.getHeight() != this->height)) // avoids processing ratio if viewport and canvas are the same size (not commonly the case though)
 		{
 			math::Scale2d ratio = math::Scale2d(viewport.getWidth() / this->width, viewport.getHeight() / this->height);
 
-			return ratio * pFP;
+			return ratio * point;
 		}
 
-		return pFP;
+		return point;
 	}
 
 	math::Point2d<int>* Canvas::getPoint(int x, int y)

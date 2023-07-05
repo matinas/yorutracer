@@ -3,6 +3,7 @@
 
 #include "math\point3d.h"
 #include "math\vector3d.h"
+#include "math\matrix\matrix3x3.h"
 #include "renderer\viewport.h"
 
 namespace yoru {
@@ -25,14 +26,19 @@ namespace renderer {
 		Camera(yoru::math::Point3d origin, yoru::math::Vector3d up, yoru::math::Vector3d forward, float near, float far, float fovh, float fovv);
 		Camera(yoru::math::Point3d origin, yoru::math::Vector3d up, yoru::math::Vector3d forward, float near, float far, Viewport viewport);
 
-		math::Point3d getOrigin();
-		math::Vector3d getUp();
-		math::Vector3d getForward();
-		float getNear();
-		float getFar();
-		float getFovH();
-		float getFovV();
-		Viewport getViewport();
+		math::Point3d getOrigin() const;
+		math::Vector3d getUp() const;
+		math::Vector3d getForward() const;
+		float getNear() const;
+		float getFar() const;
+		float getFovH() const;
+		float getFovV() const;
+		Viewport getViewport() const;
+		math::Matrix3x3* getViewMatrix() const;
+
+		bool isInsideVolume(const math::Point3d& p); // checks whether the point is in fron the camera (inside the camera's projection volume)
+
+		void lookAt(const math::Point3d& target);
 
 	private:
 		math::Point3d origin;
@@ -42,6 +48,8 @@ namespace renderer {
 		float fovh, fovv; // horizontal and vertical FOV, respectively
 
 		Viewport viewport;
+
+		math::Matrix3x3* viewMatrix;
 
 		void setProjectionPlaneSettings(float near, float far, float fovh, float fovv);
 		void setProjectionPlaneSettings(float near, float far, Viewport viewport);

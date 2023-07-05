@@ -4,6 +4,7 @@
 
 #include "renderer\camera.h"
 #include "utils\utils.h"
+#include "math\matrix\matrixfactory.h"
 
 namespace yoru {
 namespace renderer {
@@ -18,6 +19,7 @@ namespace renderer {
 					   near(DefaultNearPlane), far(DefaultFarPlane), fovh(DefaultFovH), fovv(DefaultFovV)
 	{
 		this->viewport = calculateViewport(this->near, this->fovh, this->fovv);
+		this->viewMatrix = math::Matrix3x3::identity;
 	}
 
 	Camera::Camera(yoru::math::Point3d origin, yoru::math::Vector3d up, yoru::math::Vector3d forward) : origin(origin), up(up), forward(forward),
@@ -25,61 +27,106 @@ namespace renderer {
 																										fovh(DefaultFovH), fovv(DefaultFovV)
 	{
 		this->viewport = calculateViewport(this->near, this->fovh, this->fovv);
+		this->viewMatrix = math::Matrix3x3::identity;
 	}
 
 	Camera::Camera(yoru::math::Point3d origin, yoru::math::Vector3d up, yoru::math::Vector3d forward, float near, float far, float fov) : origin(origin), up(up), forward(forward)
 	{
 		setProjectionPlaneSettings(near, far, fov, fov);
+
+		this->viewMatrix = math::Matrix3x3::identity;
 	}
 
 	Camera::Camera(yoru::math::Point3d origin, yoru::math::Vector3d up, yoru::math::Vector3d forward, float near, float far, float fovh, float fovv) : origin(origin), up(up), forward(forward)
 	{
 		setProjectionPlaneSettings(near, far, fovh, fovv);
+
+		this->viewMatrix = math::Matrix3x3::identity;
 	}
 
 	Camera::Camera(yoru::math::Point3d origin, yoru::math::Vector3d up, yoru::math::Vector3d forward, float near, float far, Viewport viewport) : origin(origin), up(up), forward(forward)
 	{
 		setProjectionPlaneSettings(near, far, viewport);
+
+		this->viewMatrix = math::Matrix3x3::identity;
 	}
 
-	math::Point3d Camera::getOrigin()
+	math::Point3d Camera::getOrigin() const
 	{
 		return this->origin;
 	}
 
-	math::Vector3d Camera::getUp()
+	math::Vector3d Camera::getUp() const
 	{
 		return this->up;
 	}
 
-	math::Vector3d Camera::getForward()
+	math::Vector3d Camera::getForward() const
 	{
 		return this->forward;
 	}
 
-	float Camera::getNear()
+	float Camera::getNear() const
 	{
 		return this->near;
 	}
 
-	float Camera::getFar()
+	float Camera::getFar() const
 	{
 		return this->far;
 	}
 
-	float Camera::getFovH()
+	float Camera::getFovH() const
 	{
 		return this->fovh;
 	}
 
-	float Camera::getFovV()
+	float Camera::getFovV() const
 	{
 		return this->fovv;
 	}
 
-	Viewport Camera::getViewport()
+	Viewport Camera::getViewport() const
 	{
 		return this->viewport;
+	}
+
+	math::Matrix3x3* Camera::getViewMatrix() const
+	{
+		return this->viewMatrix;
+	}
+
+	bool Camera::isInsideVolume(const math::Point3d& p)
+	{
+		// TODO: over-simplified version that assumes the camera is always at the origin pointing towards z+
+		// we'll need to generalize this whenever we add support to place the camera at whatever position/direction
+
+		// NOTE: another simple and more performant way of implementing this is to tackle it sooner, taking into account
+		// only those t where t > Camera.near (discard negative roots/ts along the ray) when calculating the intersections between the ray and the scene's objects
+		// the drawback is that it implies getting the camera info inside the ray intersection calculations somehow...
+
+		// another similar way would be to store the roots t inside the RayIntersectionInfo in addition to the points
+		// then when we check for hitInfo.hasHits() we can check whether those t values are valid (in front of Camera.near)
+
+		return p.getZ() >= near;
+	}
+
+	void Camera::lookAt(const math::Point3d& target)
+	{
+		math::Vector3d forward = target - this->getOrigin();
+		forward.normalize();
+
+		math::Vector3d right = this->getUp().cross(forward);
+		right.normalize();
+
+		math::Vector3d up = forward.cross(right);
+		up.normalize();
+
+		// TODO: we still need to take into acount the eye/camera position as part of this matrix
+		// for which we'll need to use 4x4 Matrix as it requires not only a rotation, but also a translation
+
+		this->viewMatrix = math::MatrixFactory::getMatrix(right, up, forward); // this is the inverse (= transpose, as it's orthogonal) of the camera matrix
+																			   // which contains the camera's reference system axis on each of its columns
 	}
 
 	void setPositiveNumericSetting(float&, float, float, std::string);

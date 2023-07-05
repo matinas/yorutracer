@@ -2,6 +2,7 @@
 #define RAY_H
 
 #include "math\point3d.h"
+#include "math\matrix\matrix3x3.h"
 
 namespace yoru {
 
