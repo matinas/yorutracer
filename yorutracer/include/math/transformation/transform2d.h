@@ -18,9 +18,9 @@ namespace math {
 		Transform2d inverse();
 
 		friend Transform2d operator*(const Transform2d& t1, const Transform2d& t2);
-		friend Point3d operator*(const Transform2d& t, const Point3d& p);
-		friend Point2d<int> operator*(const Transform2d& t, const Point2d<int>& p);
-		friend Point2d<float> operator*(const Transform2d& t, const Point2d<float>& p);
+		friend yorumathpoint::Point3f operator*(const Transform2d& t, const yorumathpoint::Point3f& p);
+		friend yorumathpoint::Point2i operator*(const Transform2d& t, const yorumathpoint::Point2i& p);
+		friend yorumathpoint::Point2f operator*(const Transform2d& t, const yorumathpoint::Point2f& p);
 
 	protected:
 		Matrix3x3* matrix;

@@ -1,7 +1,7 @@
 #ifndef SCREEN_H
 #define SCREEN_H
 
-#include "math\point2d.h"
+#include "math\point.h"
 #include "math\matrix\matrix3x3.h"
 #include "math\transformation\affine2d.h"
 
@@ -18,15 +18,15 @@ namespace renderer {
 
 		// the origin of the screen by (our) convention is at the top/left of the rectangle defined by height/width
 		// from the origin x goes right and y goes down (y is mirrored wrt the global 2D/UI world space coordinate system)
-		Screen(int width, int height, math::Point2d<int> center);
+		Screen(int width, int height, yorumathpoint::Point2i center);
 
 		~Screen();
 
 		int getWidth();
 		int getHeight();
 
-		math::Point2d<int> getCenter();
-		math::Point2d<int>* getPoint(int x, int y);
+		yorumathpoint::Point2i getCenter();
+		yorumathpoint::Point2i* getPoint(int x, int y);
 
 		// the returned transformation allows to take a point in the screen local coordinate system to
 		// a point in the global 2D/UI world space coordinate system (z=0) upon which the screen is defined
@@ -38,16 +38,16 @@ namespace renderer {
 		
 		// takes a point in the screen local coordinate system to a point in the specified canvas local coordinate system,
 		// assuming both coordinate systems are custom-positioned in relation to the global 2D/UI world space coordinate system (z=0)
-		math::Point2d<int> toCanvasWorldCoords(math::Point2d<int> p, Canvas screen);
+		yorumathpoint::Point2i toCanvasWorldCoords(yorumathpoint::Point2i p, Canvas screen);
 
 		// takes a point in the screen local coordinate system to a point in the specified canvas local coordinate system, assuming both the scren and the
 		// canvas "match" exactly (except for any difference in scale), regardless their relative position in the global 2D/UI world space coordinate system (z=0)
 		// use this function whenever just mapping a 2D point inside the screen to a 2D point inside the canvas is needed
-		math::Point2d<int> toCanvasCoords(math::Point2d<int> p, Canvas screen);
+		yorumathpoint::Point2i toCanvasCoords(yorumathpoint::Point2i p, Canvas screen);
 
 	private:
 		int width, height;
-		math::Point2d<int> center;
+		yorumathpoint::Point2i center;
 		math::Affine2d screenToWorldTransform, worldToScreenTransform;
 
 		math::Affine2d getWorldTransform();

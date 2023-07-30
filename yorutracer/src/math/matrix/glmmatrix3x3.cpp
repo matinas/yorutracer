@@ -21,7 +21,7 @@ namespace math {
 							 item20, item21, item22);
 	}
 
-	GLMMatrix3x3::GLMMatrix3x3(const Vector3d& row0, const Vector3d& row1, const Vector3d& row2)
+	GLMMatrix3x3::GLMMatrix3x3(const yorumathvector::Vector3f& row0, const yorumathvector::Vector3f& row1, const yorumathvector::Vector3f& row2)
 	{
 		glm::vec3 vrow0 = glm::vec3(row0.getX(), row0.getY(), row0.getZ());
 		glm::vec3 vrow1 = glm::vec3(row1.getX(), row1.getY(), row1.getZ());
@@ -46,14 +46,14 @@ namespace math {
 		return matrix[i][j];
 	}
 
-	Vector3d GLMMatrix3x3::getRow(int row) const
+	yorumathvector::Vector3f GLMMatrix3x3::getRow(int row) const
 	{
-		return Vector3d(matrix[row][0], matrix[row][1], matrix[row][2]);
+		return yorumathvector::Vector3f(matrix[row][0], matrix[row][1], matrix[row][2]);
 	}
 
-	Vector3d GLMMatrix3x3::getCol(int col) const
+	yorumathvector::Vector3f GLMMatrix3x3::getCol(int col) const
 	{
-		return Vector3d(matrix[0][col], matrix[1][col], matrix[2][col]);
+		return yorumathvector::Vector3f(matrix[0][col], matrix[1][col], matrix[2][col]);
 	}
 
 	float GLMMatrix3x3::det()

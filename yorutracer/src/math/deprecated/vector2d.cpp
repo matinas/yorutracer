@@ -1,7 +1,8 @@
-#include "math\vector2d.h"
+#include "math\deprecated\vector2d.h"
 
 namespace yoru {
 namespace math {
+namespace deprecated {
 
 	Vector2d::Vector2d()
 	{
@@ -19,13 +20,13 @@ namespace math {
 	{
 	}
 
-	float Vector2d::getX() const
+	inline float Vector2d::getX() const
 	{
 		return x;
 	}
 
-	float Vector2d::getY() const
+	inline float Vector2d::getY() const
 	{
 		return y;
 	}
-}}
+}}}

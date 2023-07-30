@@ -86,11 +86,11 @@ namespace math {
 			// we can assume that the transformation represents a composition of rotation OR scale, and translation transforms
 			// so the inverse can be easily derived as described here (it's the same for 3x3): https://graphics.stanford.edu/courses/cs248-98-fall/Final/q4.html
 
-			Vector3d translationVec = matrix->getCol(2);
+			yorumathvector::Vector3f translationVec = matrix->getCol(2);
 
-			Vector3d row0 = Vector3d(matrix->getItem(0, 0), matrix->getItem(1, 0), -(matrix->getCol(0) * translationVec));
-			Vector3d row1 = Vector3d(matrix->getItem(0, 1), matrix->getItem(1, 1), -(matrix->getCol(1) * translationVec));
-			Vector3d row2 = Vector3d(0, 0, 1);
+			yorumathvector::Vector3f row0 = yorumathvector::Vector3f(matrix->getItem(0, 0), matrix->getItem(1, 0), -(matrix->getCol(0) * translationVec));
+			yorumathvector::Vector3f row1 = yorumathvector::Vector3f(matrix->getItem(0, 1), matrix->getItem(1, 1), -(matrix->getCol(1) * translationVec));
+			yorumathvector::Vector3f row2 = yorumathvector::Vector3f(0.f, 0.f, 1.f);
 
 			return Affine2d(MatrixFactory::getMatrix(row0, row1, row2));
 		}
@@ -105,7 +105,7 @@ namespace math {
 		return Affine2d((*t1.matrix) * (*t2.matrix));
 	}
 
-	Point2d<int> operator*(const Affine2d& t, const Point2d<int>& p)
+	yorumathpoint::Point2i operator*(const Affine2d& t, const yorumathpoint::Point2i& p)
 	{
 		return (*t.matrix) * p;
 	}

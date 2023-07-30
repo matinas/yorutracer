@@ -29,7 +29,7 @@ namespace renderer {
 		return this->height;
 	}
 
-	math::Point2d<float>* Viewport::getPoint(float x, float y)
+	yorumathpoint::Point2f* Viewport::getPoint(float x, float y)
 	{
 		float halfWidth = width / 2.0f;
 		float halfHeight = height / 2.0f;
@@ -41,18 +41,18 @@ namespace renderer {
 			return NULL;
 		}
 
-		return new math::Point2d<float>(x, y);
+		return new yorumathpoint::Point2f(x, y);
 	}
 
-	math::Point2d<int> Viewport::toCanvasCoords(math::Point2d<float> p, Canvas canvas)
+	yorumathpoint::Point2i Viewport::toCanvasCoords(yorumathpoint::Point2f p, Canvas canvas)
 	{
 		// in the inverse way as toViewportCoords(), we now need to convert a viewport point which
 		// represents a pixel in world coordinates to an actual pixel in the canvas, so we just
 		// need a scale transform. check more details in Canvas::toViewportCoords()
 
 		math::Scale2d ratio = math::Scale2d(canvas.getWidth() / this->width, canvas.getHeight() / this->height);
-		math::Point2d<float> pScale = ratio * p;
+		yorumathpoint::Point2f pScale = ratio * p;
 
-		return math::Point2d<int>(static_cast<int>(pScale.getX()), static_cast<int>(pScale.getY()));
+		return yorumathpoint::Point2i(static_cast<int>(pScale.getX()), static_cast<int>(pScale.getY()));
 	}
 }}

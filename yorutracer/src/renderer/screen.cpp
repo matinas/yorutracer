@@ -12,21 +12,21 @@ namespace renderer {
 	{
 		this->width = 800;
 		this->height = 600;
-		this->center = math::Point2d<int>(0, 0); // when not specified the center of the canvas matches the origin in global 2D/UI world space coordinates
+		this->center = yorumathpoint::Point2i(0, 0); // when not specified the center of the canvas matches the origin in global 2D/UI world space coordinates
 
 		initTransforms();
 	}
 
 	Screen::Screen(int width, int height) : width(width), height(height)
 	{
-		this->center = math::Point2d<int>(0, 0);
+		this->center = yorumathpoint::Point2i(0, 0);
 
 		initTransforms();
 	}
 
 	// creates a screen with a custom center specified relative to the
 	// global 2D/UI world space coordinate system origin which is at (0,0)
-	Screen::Screen(int width, int height, math::Point2d<int> center) : width(width), height(height), center(center)
+	Screen::Screen(int width, int height, yorumathpoint::Point2i center) : width(width), height(height), center(center)
 	{
 		initTransforms();
 	}
@@ -59,7 +59,7 @@ namespace renderer {
 		return this->height;
 	}
 
-	math::Point2d<int> Screen::getCenter()
+	yorumathpoint::Point2i Screen::getCenter()
 	{
 		return this->center;
 	}
@@ -83,12 +83,12 @@ namespace renderer {
 		return screenToCanvas;
 	}
 
-	math::Point2d<int> Screen::toCanvasWorldCoords(math::Point2d<int> p, Canvas canvas)
+	yorumathpoint::Point2i Screen::toCanvasWorldCoords(yorumathpoint::Point2i p, Canvas canvas)
 	{
 		return getScreenToCanvasWorldTransform(canvas) * p;
 	}
 
-	math::Point2d<int> Screen::toCanvasCoords(math::Point2d<int> p, Canvas canvas)
+	yorumathpoint::Point2i Screen::toCanvasCoords(yorumathpoint::Point2i p, Canvas canvas)
 	{
 		// TODO: take into account the eventual difference in scale between canvas and screen
 		
@@ -111,7 +111,7 @@ namespace renderer {
 		return ratio * transform * p;
 	}
 
-	math::Point2d<int>* Screen::getPoint(int x, int y)
+	yorumathpoint::Point2i* Screen::getPoint(int x, int y)
 	{
 		if (x < 0 || y < 0 || x > width || y > height)
 		{
@@ -120,6 +120,6 @@ namespace renderer {
 			return NULL;
 		}
 
-		return new math::Point2d<int>(x, y);
+		return new yorumathpoint::Point2i(x, y);
 	}
 }}

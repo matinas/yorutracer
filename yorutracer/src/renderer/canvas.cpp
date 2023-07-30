@@ -13,7 +13,7 @@ namespace renderer {
 	{
 		this->width = 800;
 		this->height = 600;
-		this->center = math::Point2d<int>(0, 0); // when not specified, the center of the canvas matches the origin (0,0) of the global 2D/UI world space coordinates
+		this->center = yorumathpoint::Point2i(0, 0); // when not specified, the center of the canvas matches the origin (0,0) of the global 2D/UI world space coordinates
 
 		this->halfWidth = static_cast<float>(this->width*0.5f);
 		this->halfHeight = static_cast<float>(this->height*0.5f);
@@ -23,12 +23,12 @@ namespace renderer {
 
 	Canvas::Canvas(int width, int height) : width(width), height(height), halfWidth(static_cast<float>(width*0.5f)), halfHeight(static_cast<float>(height*0.5f))
 	{
-		this->center = math::Point2d<int>(0, 0);
+		this->center = yorumathpoint::Point2i(0, 0);
 
 		initTransforms();
 	}
 
-	Canvas::Canvas(int width, int height, math::Point2d<int> center) : width(width), height(height), halfWidth(static_cast<float>(width*0.5f)), halfHeight(static_cast<float>(height*0.5f)), center(center)
+	Canvas::Canvas(int width, int height, yorumathpoint::Point2i center) : width(width), height(height), halfWidth(static_cast<float>(width*0.5f)), halfHeight(static_cast<float>(height*0.5f)), center(center)
 	{
 		initTransforms();
 	}
@@ -64,7 +64,7 @@ namespace renderer {
 		return this->height;
 	}
 
-	math::Point2d<int> Canvas::getCenter()
+	yorumathpoint::Point2i Canvas::getCenter()
 	{
 		return this->center;
 	}
@@ -86,12 +86,12 @@ namespace renderer {
 		return canvasToScreen;
 	}
 
-	math::Point2d<int> Canvas::toScreenWorldCoords(math::Point2d<int> p, Screen screen)
+	yorumathpoint::Point2i Canvas::toScreenWorldCoords(yorumathpoint::Point2i p, Screen screen)
 	{
 		return getCanvasToScreenWorldTransform(screen) * p;
 	}
 
-	math::Point2d<int> Canvas::toScreenCoords(math::Point2d<int> p, Screen screen)
+	yorumathpoint::Point2i Canvas::toScreenCoords(yorumathpoint::Point2i p, Screen screen)
 	{
 		// we know that Pc=(100,100) should map to Ps=(200,0), and Pc'=(100,-100) to Ps'(200,200) (Pc=canvas point, Ps=screen point)
 		// so we need to find the matrix M so that M*Pc=Ps and M*Pc'=Ps'
@@ -114,7 +114,7 @@ namespace renderer {
 		}
 	}
 
-	math::Point3d Canvas::toViewportCoords(math::Point2d<int> p, Camera camera)
+	yorumathpoint::Point3f Canvas::toViewportCoords(yorumathpoint::Point2i p, Camera camera)
 	{
 		// as both the canvas and the viewport coordinate systems are conveniently defined to "match", the only thing we need to
 		// take into account is the difference in scale between canvas and viewport, given the viewport is measured in world units
@@ -122,7 +122,7 @@ namespace renderer {
 		// the viewport in the same amount of pixels than the canvas, to get the corresponding canvas pixel into world space coordinates
 
 		renderer::Viewport viewport = camera.getViewport();
-		math::Point3d point = math::Point3d(static_cast<float>(p.getX()), static_cast<float>(p.getY()), camera.getNear());
+		yorumathpoint::Point3f point = yorumathpoint::Point3f(static_cast<float>(p.getX()), static_cast<float>(p.getY()), camera.getNear());
 
 		if ((viewport.getWidth() != this->width) || (viewport.getHeight() != this->height)) // avoids processing ratio if viewport and canvas are the same size (not commonly the case though)
 		{
@@ -134,7 +134,7 @@ namespace renderer {
 		return point;
 	}
 
-	math::Point2d<int>* Canvas::getPoint(int x, int y)
+	yorumathpoint::Point2i* Canvas::getPoint(int x, int y)
 	{
 		if (x < -halfWidth || y < -halfHeight || x > halfWidth || y > halfHeight)
 		{
@@ -143,6 +143,6 @@ namespace renderer {
 			return NULL;
 		}
 
-		return new math::Point2d<int>(x, y);
+		return new yorumathpoint::Point2i(x, y);
 	}
 }}

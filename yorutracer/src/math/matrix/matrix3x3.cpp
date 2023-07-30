@@ -10,47 +10,47 @@ namespace math {
 
 	Matrix3x3* operator*(const Matrix3x3& mat1, const Matrix3x3& mat2)
 	{
-		math::Vector3d mat1row0 = mat1.getRow(0); math::Vector3d mat1row1 = mat1.getRow(1); math::Vector3d mat1row2 = mat1.getRow(2);
-		math::Vector3d mat2col0 = mat2.getCol(0); math::Vector3d mat2col1 = mat2.getCol(1); math::Vector3d mat2col2 = mat2.getCol(2);
+		yorumathvector::Vector3f mat1row0 = mat1.getRow(0); yorumathvector::Vector3f mat1row1 = mat1.getRow(1); yorumathvector::Vector3f mat1row2 = mat1.getRow(2);
+		yorumathvector::Vector3f mat2col0 = mat2.getCol(0); yorumathvector::Vector3f mat2col1 = mat2.getCol(1); yorumathvector::Vector3f mat2col2 = mat2.getCol(2);
 
-		Vector3d row0 = Vector3d(mat1row0*mat2col0, mat1row0*mat2col1, mat1row0*mat2col2);
-		Vector3d row1 = Vector3d(mat1row1*mat2col0, mat1row1*mat2col1, mat1row1*mat2col2);
-		Vector3d row2 = Vector3d(mat1row2*mat2col0, mat1row2*mat2col1, mat1row2*mat2col2);
+		yorumathvector::Vector3f row0 = yorumathvector::Vector3f(mat1row0*mat2col0, mat1row0*mat2col1, mat1row0*mat2col2);
+		yorumathvector::Vector3f row1 = yorumathvector::Vector3f(mat1row1*mat2col0, mat1row1*mat2col1, mat1row1*mat2col2);
+		yorumathvector::Vector3f row2 = yorumathvector::Vector3f(mat1row2*mat2col0, mat1row2*mat2col1, mat1row2*mat2col2);
 
 		return MatrixFactory::getMatrix(row0, row1, row2);
 	}
 
 	Matrix3x3* operator+(const Matrix3x3& mat1, const Matrix3x3& mat2)
 	{
-		Vector3d row0 = mat1.getRow(0) + mat2.getRow(0);
-		Vector3d row1 = mat1.getRow(1) + mat2.getRow(1);
-		Vector3d row2 = mat1.getRow(2) + mat2.getRow(2);
+		yorumathvector::Vector3f row0 = mat1.getRow(0) + mat2.getRow(0);
+		yorumathvector::Vector3f row1 = mat1.getRow(1) + mat2.getRow(1);
+		yorumathvector::Vector3f row2 = mat1.getRow(2) + mat2.getRow(2);
 
 		return MatrixFactory::getMatrix(row0, row1, row2);
 	}
 
-	Point3d operator*(const Matrix3x3& mat, const Point3d& p)
+	yorumathpoint::Point3f operator*(const Matrix3x3& mat, const yorumathpoint::Point3f& p)
 	{
 		// we are using a traditional column-vector convention, so
 		// to post-multiply (M*p) we must take the rows of the matrix
 
-		return Point3d(mat.getRow(0)*p, mat.getRow(1)*p, mat.getRow(2)*p);
+		return yorumathpoint::Point3f(mat.getRow(0)*p, mat.getRow(1)*p, mat.getRow(2)*p);
 	}
 
-	Point2d<int> operator*(const Matrix3x3& mat, const Point2d<int>& p)
+	yorumathpoint::Point2i operator*(const Matrix3x3& mat, const yorumathpoint::Point2i& p)
 	{
-		Point3d point = Point3d(static_cast<float>(p.getX()), static_cast<float>(p.getY()), 1.0f);
-		Point3d prod = mat * point;
+		yorumathpoint::Point3f point = yorumathpoint::Point3f(static_cast<float>(p.getX()), static_cast<float>(p.getY()), 1.0f);
+		yorumathpoint::Point3f prod = mat * point;
 
-		return Point2d<int>(static_cast<int>(prod.getX()), static_cast<int>(prod.getY()));
+		return yorumathpoint::Point2i(static_cast<int>(prod.getX()), static_cast<int>(prod.getY()));
 	}
 
-	Point2d<float> operator*(const Matrix3x3& mat, const Point2d<float>& p)
+	yorumathpoint::Point2f operator*(const Matrix3x3& mat, const yorumathpoint::Point2f& p)
 	{
-		Point3d point = Point3d(p.getX(), p.getY(), 1.0f);
-		Point3d prod = mat * point;
+		yorumathpoint::Point3f point = yorumathpoint::Point3f(p.getX(), p.getY(), 1.0f);
+		yorumathpoint::Point3f prod = mat * point;
 
-		return Point2d<float>(prod.getX(), prod.getY());
+		return yorumathpoint::Point2f(prod.getX(), prod.getY());
 	}
 
 	bool operator==(const Matrix3x3& mat1, const Matrix3x3& mat2)

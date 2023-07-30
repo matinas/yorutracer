@@ -12,19 +12,19 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\math\deprecated\point2d.cpp" />
+    <ClCompile Include="src\math\deprecated\point3d.cpp" />
+    <ClCompile Include="src\math\deprecated\vector2d.cpp" />
+    <ClCompile Include="src\math\deprecated\vector3d.cpp" />
     <ClCompile Include="src\math\matrix\glmmatrix3x3.cpp" />
     <ClCompile Include="src\math\matrix\matrix3x3.cpp" />
     <ClCompile Include="src\math\matrix\matrixfactory.cpp" />
     <ClCompile Include="src\math\matrix\yorumatrix3x3.cpp" />
-    <ClCompile Include="src\math\point2d.cpp" />
-    <ClCompile Include="src\math\point3d.cpp" />
     <ClCompile Include="src\math\transformation\affine2d.cpp" />
     <ClCompile Include="src\math\transformation\rotation2d.cpp" />
     <ClCompile Include="src\math\transformation\scale2d.cpp" />
     <ClCompile Include="src\math\transformation\transform2d.cpp" />
     <ClCompile Include="src\math\transformation\translation2d.cpp" />
-    <ClCompile Include="src\math\vector2d.cpp" />
-    <ClCompile Include="src\math\vector3d.cpp" />
     <ClCompile Include="src\objects\sphere.cpp" />
     <ClCompile Include="src\renderer\camera.cpp" />
     <ClCompile Include="src\renderer\canvas.cpp" />
@@ -43,19 +43,21 @@
     <ClCompile Include="src\utils\utils.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="include\math\deprecated\point2d.h" />
+    <ClInclude Include="include\math\deprecated\point3d.h" />
+    <ClInclude Include="include\math\deprecated\vector2d.h" />
+    <ClInclude Include="include\math\deprecated\vector3d.h" />
     <ClInclude Include="include\math\matrix\glmmatrix3x3.h" />
     <ClInclude Include="include\math\matrix\matrix3x3.h" />
     <ClInclude Include="include\math\matrix\matrixfactory.h" />
     <ClInclude Include="include\math\matrix\yorumatrix3x3.h" />
-    <ClInclude Include="include\math\point2d.h" />
-    <ClInclude Include="include\math\point3d.h" />
+    <ClInclude Include="include\math\point.h" />
     <ClInclude Include="include\math\transformation\affine2d.h" />
     <ClInclude Include="include\math\transformation\rotation2d.h" />
     <ClInclude Include="include\math\transformation\scale2d.h" />
     <ClInclude Include="include\math\transformation\transform2d.h" />
     <ClInclude Include="include\math\transformation\translation2d.h" />
-    <ClInclude Include="include\math\vector2d.h" />
-    <ClInclude Include="include\math\vector3d.h" />
+    <ClInclude Include="include\math\vector.h" />
     <ClInclude Include="include\objects\sphere.h" />
     <ClInclude Include="include\renderer\camera.h" />
     <ClInclude Include="include\renderer\canvas.h" />
@@ -70,6 +72,7 @@
     <ClInclude Include="include\tests\renderer\testsuite_screen.h" />
     <ClInclude Include="include\tests\test.h" />
     <ClInclude Include="include\tests\testsuite.h" />
+    <ClInclude Include="include\utils\commons.h" />
     <ClInclude Include="include\utils\timer.h" />
     <ClInclude Include="include\utils\utils.h" />
   </ItemGroup>
@@ -122,6 +125,7 @@
       <AdditionalIncludeDirectories>$(ProjectDir)lib\glm;$(ProjectDir)lib\FreeImage\Dist\x32;$(ProjectDir)include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DisableLanguageExtensions>true</DisableLanguageExtensions>
       <OpenMPSupport>false</OpenMPSupport>
+      <PreprocessToFile>false</PreprocessToFile>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>

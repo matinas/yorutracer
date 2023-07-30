@@ -19,7 +19,7 @@ namespace math {
 		this->items[2][0] = item20; this->items[2][1] = item21; this->items[2][2] = item22;
 	}
 
-	YoruMatrix3x3::YoruMatrix3x3(Vector3d row0, Vector3d row1, Vector3d row2)
+	YoruMatrix3x3::YoruMatrix3x3(yorumathvector::Vector3f row0, yorumathvector::Vector3f row1, yorumathvector::Vector3f row2)
 	{
 		this->items[0][0] = row0.getX(); this->items[0][1] = row0.getY(); this->items[0][2] = row0.getZ();
 		this->items[1][0] = row1.getX(); this->items[1][1] = row1.getY(); this->items[1][2] = row1.getZ();
@@ -42,14 +42,14 @@ namespace math {
 		return items[i][j];
 	}
 
-	Vector3d YoruMatrix3x3::getRow(int row) const
+	yorumathvector::Vector3f YoruMatrix3x3::getRow(int row) const
 	{
-		return Vector3d(items[row][0], items[row][1], items[row][2]);
+		return yorumathvector::Vector3f(items[row][0], items[row][1], items[row][2]);
 	}
 
-	Vector3d YoruMatrix3x3::getCol(int col) const
+	yorumathvector::Vector3f YoruMatrix3x3::getCol(int col) const
 	{
-		return Vector3d(items[0][col], items[1][col], items[2][col]);
+		return yorumathvector::Vector3f(items[0][col], items[1][col], items[2][col]);
 	}
 
 	float YoruMatrix3x3::det()

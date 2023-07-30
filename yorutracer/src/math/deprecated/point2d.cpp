@@ -1,7 +1,8 @@
-#include "math\Point2d.h"
+#include "math\deprecated\point2d.h"
 
 namespace yoru {
 namespace math {
+namespace deprecated {
 
 	template <typename T> Point2d<T>::Point2d()
 	{
@@ -43,4 +44,4 @@ namespace math {
 	template Point2d<float>::~Point2d();
 	template float Point2d<float>::getX() const;
 	template float Point2d<float>::getY() const;
-}}
+}}}

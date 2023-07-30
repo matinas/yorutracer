@@ -1,8 +1,9 @@
-#include "math\point3d.h"
-#include "math\vector3d.h"
+#include "math\deprecated\point3d.h"
+#include "math\deprecated\vector3d.h"
 
 namespace yoru {
 namespace math {
+namespace deprecated {
 
 	Point3d::Point3d()
 	{
@@ -28,17 +29,17 @@ namespace math {
 	{
 	}
 
-	float Point3d::getX() const
+	inline float Point3d::getX() const
 	{
 		return x;
 	}
 
-	float Point3d::getY() const
+	inline float Point3d::getY() const
 	{
 		return y;
 	}
 
-	float Point3d::getZ() const
+	inline float Point3d::getZ() const
 	{
 		return z;
 	}
@@ -69,4 +70,4 @@ namespace math {
 
 		return out;
 	}
-}}
+}}}

@@ -9,7 +9,7 @@ namespace renderer {
 	{
 	}
 
-	RayIntersectionInfo::RayIntersectionInfo(Ray* const ray, objects::Sphere* const sphere, math::Point3d* const points)
+	RayIntersectionInfo::RayIntersectionInfo(Ray* const ray, objects::Sphere* const sphere, yorumathpoint::Point3f* const points)
 	{
 		this->ray = ray;
 		this->sphere = sphere;
@@ -35,16 +35,16 @@ namespace renderer {
 		return this->points != nullptr;
 	}
 
-	math::Point3d* RayIntersectionInfo::getPoints()
+	yorumathpoint::Point3f* RayIntersectionInfo::getPoints()
 	{
 		return points;
 	}
 
-	math::Point3d* RayIntersectionInfo::getNearest()
+	yorumathpoint::Point3f* RayIntersectionInfo::getNearest()
 	{
 		if (points != nullptr)
 		{
-			math::Point3d rayOrigin = ray->getOrigin();
+			yorumathpoint::Point3f rayOrigin = ray->getOrigin();
 
 			float dist1 = rayOrigin.distanceTo(points[0]);
 			float dist2 = rayOrigin.distanceTo(points[1]);

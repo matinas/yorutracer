@@ -1,7 +1,7 @@
 #ifndef SPHERE_H
 #define SPHERE_H
 
-#include "math\vector3d.h"
+#include "math\vector.h"
 #include "math\matrix\matrix3x3.h"
 #include "renderer\raytracer\rayintersectioninfo.h"
 
@@ -11,19 +11,19 @@ namespace objects {
 	class Sphere
 	{
 	private:
-		math::Point3d center;
+		yorumathpoint::Point3f center;
 		float radius;
-		math::Point3d color;
+		yorumathpoint::Point3f color;
 
 	public:
 		Sphere();
-		Sphere(const math::Point3d& center, float radius);
-		Sphere(const math::Point3d& center, float radius, const math::Point3d& color);
+		Sphere(const yorumathpoint::Point3f& center, float radius);
+		Sphere(const yorumathpoint::Point3f& center, float radius, const yorumathpoint::Point3f& color);
 		~Sphere();
 
-		math::Point3d getCenter() const;
+		yorumathpoint::Point3f getCenter() const;
 		float getRadius() const;
-		math::Point3d getColor() const;
+		yorumathpoint::Point3f getColor() const;
 		
 		renderer::RayIntersectionInfo intersect(const Ray r);
 

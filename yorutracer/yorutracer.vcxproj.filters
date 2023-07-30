@@ -79,6 +79,12 @@
     <Filter Include="src\renderer\rasterizer">
       <UniqueIdentifier>{f11218ba-feb1-49c1-aa7d-6f65350c4226}</UniqueIdentifier>
     </Filter>
+    <Filter Include="include\math\deprecated">
+      <UniqueIdentifier>{b1c82840-2e93-4cae-8e75-ccf34cf3caca}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\math\deprecated">
+      <UniqueIdentifier>{b70820bb-453c-45b4-b5a4-22dec77bd5a4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp">
@@ -101,18 +107,6 @@
     </ClCompile>
     <ClCompile Include="src\math\transformation\translation2d.cpp">
       <Filter>src\math\transformation</Filter>
-    </ClCompile>
-    <ClCompile Include="src\math\point2d.cpp">
-      <Filter>src\math</Filter>
-    </ClCompile>
-    <ClCompile Include="src\math\point3d.cpp">
-      <Filter>src\math</Filter>
-    </ClCompile>
-    <ClCompile Include="src\math\vector2d.cpp">
-      <Filter>src\math</Filter>
-    </ClCompile>
-    <ClCompile Include="src\math\vector3d.cpp">
-      <Filter>src\math</Filter>
     </ClCompile>
     <ClCompile Include="src\renderer\canvas.cpp">
       <Filter>src\renderer</Filter>
@@ -171,6 +165,18 @@
     <ClCompile Include="src\renderer\raytracer\rayintersectioninfo.cpp">
       <Filter>src\renderer\raytracer</Filter>
     </ClCompile>
+    <ClCompile Include="src\math\deprecated\vector3d.cpp">
+      <Filter>src\math\deprecated</Filter>
+    </ClCompile>
+    <ClCompile Include="src\math\deprecated\vector2d.cpp">
+      <Filter>src\math\deprecated</Filter>
+    </ClCompile>
+    <ClCompile Include="src\math\deprecated\point3d.cpp">
+      <Filter>src\math\deprecated</Filter>
+    </ClCompile>
+    <ClCompile Include="src\math\deprecated\point2d.cpp">
+      <Filter>src\math\deprecated</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\objects\sphere.h">
@@ -190,18 +196,6 @@
     </ClInclude>
     <ClInclude Include="include\math\transformation\translation2d.h">
       <Filter>include\math\transformation</Filter>
-    </ClInclude>
-    <ClInclude Include="include\math\point2d.h">
-      <Filter>include\math</Filter>
-    </ClInclude>
-    <ClInclude Include="include\math\point3d.h">
-      <Filter>include\math</Filter>
-    </ClInclude>
-    <ClInclude Include="include\math\vector2d.h">
-      <Filter>include\math</Filter>
-    </ClInclude>
-    <ClInclude Include="include\math\vector3d.h">
-      <Filter>include\math</Filter>
     </ClInclude>
     <ClInclude Include="include\renderer\canvas.h">
       <Filter>include\renderer</Filter>
@@ -259,6 +253,27 @@
     </ClInclude>
     <ClInclude Include="include\renderer\raytracer\rayintersectioninfo.h">
       <Filter>include\renderer\raytracer</Filter>
+    </ClInclude>
+    <ClInclude Include="include\math\vector.h">
+      <Filter>include\math</Filter>
+    </ClInclude>
+    <ClInclude Include="include\math\deprecated\vector2d.h">
+      <Filter>include\math\deprecated</Filter>
+    </ClInclude>
+    <ClInclude Include="include\math\deprecated\vector3d.h">
+      <Filter>include\math\deprecated</Filter>
+    </ClInclude>
+    <ClInclude Include="include\math\point.h">
+      <Filter>include\math</Filter>
+    </ClInclude>
+    <ClInclude Include="include\math\deprecated\point3d.h">
+      <Filter>include\math\deprecated</Filter>
+    </ClInclude>
+    <ClInclude Include="include\math\deprecated\point2d.h">
+      <Filter>include\math\deprecated</Filter>
+    </ClInclude>
+    <ClInclude Include="include\utils\commons.h">
+      <Filter>include\utils</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

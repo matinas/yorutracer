@@ -15,53 +15,53 @@ namespace renderer {
 	const float Camera::DefaultFovV = 55.0f;
 	const float Camera::DefaultViewportSize = 1.0;
 
-	Camera::Camera() : origin(math::Point3d(0.0f, 0.0f, 0.0f)), up(math::Vector3d(0.0f, 1.0f, 0.0f)), forward(math::Vector3d(0.0f, 0.0f, 1.0f)),
+	Camera::Camera() : origin(yorumathpoint::Point3f(0.0f, 0.0f, 0.0f)), up(yorumathvector::Vector3f(0.0f, 1.0f, 0.0f)), forward(yorumathvector::Vector3f(0.0f, 0.0f, 1.0f)),
 					   near(DefaultNearPlane), far(DefaultFarPlane), fovh(DefaultFovH), fovv(DefaultFovV)
 	{
 		this->viewport = calculateViewport(this->near, this->fovh, this->fovv);
 		this->viewMatrix = math::Matrix3x3::identity;
 	}
 
-	Camera::Camera(yoru::math::Point3d origin, yoru::math::Vector3d up, yoru::math::Vector3d forward) : origin(origin), up(up), forward(forward),
-																										near(DefaultNearPlane), far(DefaultFarPlane),
-																										fovh(DefaultFovH), fovv(DefaultFovV)
+	Camera::Camera(yorumathpoint::Point3f origin, yorumathvector::Vector3f up, yorumathvector::Vector3f forward) : origin(origin), up(up), forward(forward),
+																												   near(DefaultNearPlane), far(DefaultFarPlane),
+																												   fovh(DefaultFovH), fovv(DefaultFovV)
 	{
 		this->viewport = calculateViewport(this->near, this->fovh, this->fovv);
 		this->viewMatrix = math::Matrix3x3::identity;
 	}
 
-	Camera::Camera(yoru::math::Point3d origin, yoru::math::Vector3d up, yoru::math::Vector3d forward, float near, float far, float fov) : origin(origin), up(up), forward(forward)
+	Camera::Camera(yorumathpoint::Point3f origin, yorumathvector::Vector3f up, yorumathvector::Vector3f forward, float near, float far, float fov) : origin(origin), up(up), forward(forward)
 	{
 		setProjectionPlaneSettings(near, far, fov, fov);
 
 		this->viewMatrix = math::Matrix3x3::identity;
 	}
 
-	Camera::Camera(yoru::math::Point3d origin, yoru::math::Vector3d up, yoru::math::Vector3d forward, float near, float far, float fovh, float fovv) : origin(origin), up(up), forward(forward)
+	Camera::Camera(yorumathpoint::Point3f origin, yorumathvector::Vector3f up, yorumathvector::Vector3f forward, float near, float far, float fovh, float fovv) : origin(origin), up(up), forward(forward)
 	{
 		setProjectionPlaneSettings(near, far, fovh, fovv);
 
 		this->viewMatrix = math::Matrix3x3::identity;
 	}
 
-	Camera::Camera(yoru::math::Point3d origin, yoru::math::Vector3d up, yoru::math::Vector3d forward, float near, float far, Viewport viewport) : origin(origin), up(up), forward(forward)
+	Camera::Camera(yorumathpoint::Point3f origin, yorumathvector::Vector3f up, yorumathvector::Vector3f forward, float near, float far, Viewport viewport) : origin(origin), up(up), forward(forward)
 	{
 		setProjectionPlaneSettings(near, far, viewport);
 
 		this->viewMatrix = math::Matrix3x3::identity;
 	}
 
-	math::Point3d Camera::getOrigin() const
+	yorumathpoint::Point3f Camera::getOrigin() const
 	{
 		return this->origin;
 	}
 
-	math::Vector3d Camera::getUp() const
+	yorumathvector::Vector3f Camera::getUp() const
 	{
 		return this->up;
 	}
 
-	math::Vector3d Camera::getForward() const
+	yorumathvector::Vector3f Camera::getForward() const
 	{
 		return this->forward;
 	}
@@ -96,7 +96,7 @@ namespace renderer {
 		return this->viewMatrix;
 	}
 
-	bool Camera::isInsideVolume(const math::Point3d& p)
+	bool Camera::isInsideVolume(const yorumathpoint::Point3f& p)
 	{
 		// TODO: over-simplified version that assumes the camera is always at the origin pointing towards z+
 		// we'll need to generalize this whenever we add support to place the camera at whatever position/direction
@@ -111,15 +111,15 @@ namespace renderer {
 		return p.getZ() >= near;
 	}
 
-	void Camera::lookAt(const math::Point3d& target)
+	void Camera::lookAt(const yorumathpoint::Point3f& target)
 	{
-		math::Vector3d forward = target - this->getOrigin();
+		yorumathvector::Vector3f forward = target - this->getOrigin();
 		forward.normalize();
 
-		math::Vector3d right = this->getUp().cross(forward);
+		yorumathvector::Vector3f right = this->getUp().cross(forward);
 		right.normalize();
 
-		math::Vector3d up = forward.cross(right);
+		yorumathvector::Vector3f up = forward.cross(right);
 		up.normalize();
 
 		// TODO: we still need to take into acount the eye/camera position as part of this matrix

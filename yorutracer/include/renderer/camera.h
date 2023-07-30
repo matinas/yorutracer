@@ -1,8 +1,8 @@
 #ifndef CAMERA_H
 #define CAMERA_H
 
-#include "math\point3d.h"
-#include "math\vector3d.h"
+#include "math\point.h"
+#include "math\vector.h"
 #include "math\matrix\matrix3x3.h"
 #include "renderer\viewport.h"
 
@@ -21,14 +21,14 @@ namespace renderer {
 		static const float DefaultNearPlane, DefaultFarPlane, DefaultFovH, DefaultFovV, DefaultViewportSize;
 
 		Camera();
-		Camera(yoru::math::Point3d origin, yoru::math::Vector3d up, yoru::math::Vector3d forward);
-		Camera(yoru::math::Point3d origin, yoru::math::Vector3d up, yoru::math::Vector3d forward, float near, float far, float fov);
-		Camera(yoru::math::Point3d origin, yoru::math::Vector3d up, yoru::math::Vector3d forward, float near, float far, float fovh, float fovv);
-		Camera(yoru::math::Point3d origin, yoru::math::Vector3d up, yoru::math::Vector3d forward, float near, float far, Viewport viewport);
+		Camera(yorumathpoint::Point3f origin, yorumathvector::Vector3f up, yorumathvector::Vector3f forward);
+		Camera(yorumathpoint::Point3f origin, yorumathvector::Vector3f up, yorumathvector::Vector3f forward, float near, float far, float fov);
+		Camera(yorumathpoint::Point3f origin, yorumathvector::Vector3f up, yorumathvector::Vector3f forward, float near, float far, float fovh, float fovv);
+		Camera(yorumathpoint::Point3f origin, yorumathvector::Vector3f up, yorumathvector::Vector3f forward, float near, float far, Viewport viewport);
 
-		math::Point3d getOrigin() const;
-		math::Vector3d getUp() const;
-		math::Vector3d getForward() const;
+		yorumathpoint::Point3f getOrigin() const;
+		yorumathvector::Vector3f getUp() const;
+		yorumathvector::Vector3f getForward() const;
 		float getNear() const;
 		float getFar() const;
 		float getFovH() const;
@@ -36,13 +36,13 @@ namespace renderer {
 		Viewport getViewport() const;
 		math::Matrix3x3* getViewMatrix() const;
 
-		bool isInsideVolume(const math::Point3d& p); // checks whether the point is in fron the camera (inside the camera's projection volume)
+		bool isInsideVolume(const yorumathpoint::Point3f& p); // checks whether the point is in fron the camera (inside the camera's projection volume)
 
-		void lookAt(const math::Point3d& target);
+		void lookAt(const yorumathpoint::Point3f& target);
 
 	private:
-		math::Point3d origin;
-		math::Vector3d up, forward;
+		yorumathpoint::Point3f origin;
+		yorumathvector::Vector3f up, forward;
 
 		float near, far;  // near and far planes for the camera viewing frustum
 		float fovh, fovv; // horizontal and vertical FOV, respectively

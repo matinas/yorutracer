@@ -24,7 +24,7 @@ namespace math {
 		virtual Affine2d inverse();
 
 		friend Affine2d operator*(const Affine2d& t1, const Affine2d& t2);
-		friend Point2d<int> operator*(const Affine2d& t, const Point2d<int>& p);
+		friend yorumathpoint::Point2i operator*(const Affine2d& t, const yorumathpoint::Point2i& p);
 
 	protected:
 		Rotation2d* rotation;

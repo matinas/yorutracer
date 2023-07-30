@@ -1,7 +1,7 @@
 #ifndef RAY_H
 #define RAY_H
 
-#include "math\point3d.h"
+#include "math\point.h"
 #include "math\matrix\matrix3x3.h"
 
 namespace yoru {
@@ -9,16 +9,16 @@ namespace yoru {
 	class Ray
 	{
 	private:
-		math::Point3d origin;
-		math::Point3d destination;
+		yorumathpoint::Point3f origin;
+		yorumathpoint::Point3f destination;
 
 	public:
 		Ray();
-		Ray(const math::Point3d& origin, const math::Point3d& destination);
+		Ray(const yorumathpoint::Point3f& origin, const yorumathpoint::Point3f& destination);
 		~Ray();
 
-		math::Point3d getOrigin() const;
-		math::Point3d getDestination() const;
+		yorumathpoint::Point3f getOrigin() const;
+		yorumathpoint::Point3f getDestination() const;
 	};
 }
 

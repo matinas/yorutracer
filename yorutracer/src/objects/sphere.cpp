@@ -9,18 +9,18 @@ using namespace yoru::objects;
 
 Sphere::Sphere()
 {
-	this->center = math::Point3d(0.f,0.f,0.f);
+	this->center = yorumathpoint::Point3f(0.f,0.f,0.f);
 	this->radius = 1.f;
 }
 
-Sphere::Sphere(const math::Point3d& center, float radius)
+Sphere::Sphere(const yorumathpoint::Point3f& center, float radius)
 {
 	this->center = center;
 	this->radius = radius;
-	this->color = math::Point3d(0.988f, 0.0588f, 0.7529f); // bright pink = (252, 15, 192)
+	this->color = yorumathpoint::Point3f(0.988f, 0.0588f, 0.7529f); // bright pink = (252, 15, 192)
 }
 
-Sphere::Sphere(const math::Point3d& center, float radius, const math::Point3d& color)
+Sphere::Sphere(const yorumathpoint::Point3f& center, float radius, const yorumathpoint::Point3f& color)
 {
 	this->center = center;
 	this->radius = radius;
@@ -31,7 +31,7 @@ Sphere::~Sphere()
 {
 }
 
-math::Point3d Sphere::getCenter() const
+yorumathpoint::Point3f Sphere::getCenter() const
 {
 	return center;
 }
@@ -41,7 +41,7 @@ float Sphere::getRadius() const
 	return radius;
 }
 
-math::Point3d Sphere::getColor() const
+yorumathpoint::Point3f Sphere::getColor() const
 {
 	return color;
 }
@@ -50,9 +50,9 @@ renderer::RayIntersectionInfo Sphere::intersect(Ray ray)
 {
 	renderer::RayIntersectionInfo intersection_info;
 
-	math::Vector3d D = ray.getDestination() - ray.getOrigin();
+	yorumathvector::Vector3f D = ray.getDestination() - ray.getOrigin();
 	D.normalize();
-	math::Vector3d CO = ray.getOrigin() - this->center;
+	yorumathvector::Vector3f CO = ray.getOrigin() - this->center;
 	float D_CO_dot = D * CO;
 	float CO_dot = CO * CO;
 
@@ -69,7 +69,7 @@ renderer::RayIntersectionInfo Sphere::intersect(Ray ray)
 	{
 		int root_count = (utils::almostEqual(discriminant, 0.0, 0.001)) ? 1 : 2;
 		
-		math::Point3d* points = new math::Point3d[root_count];
+		yorumathpoint::Point3f* points = new yorumathpoint::Point3f[root_count];
 
 		float denom = 1.f / 2*a;
 		for (int i=0, j=1; i<root_count; ++i, j=j-2) // little trick to use a generic formula below: when there are two roots, j takes values 1 and -1

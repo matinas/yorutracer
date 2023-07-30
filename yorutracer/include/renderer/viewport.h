@@ -1,7 +1,7 @@
 #ifndef VIEWPORT_H
 #define VIEWPORT_H
 
-#include "math\point2d.h"
+#include "math\point.h"
 
 namespace yoru {
 namespace renderer {
@@ -18,10 +18,10 @@ namespace renderer {
 		double getWidth();
 		double getHeight();
 
-		math::Point2d<float>* getPoint(float x, float y);
+		yorumathpoint::Point2f* getPoint(float x, float y);
 
 		// takes a point in the viewport local coordinate system (world coordinate) to a point in the specified canvas' local coordinate system (pixel)
-		math::Point2d<int> toCanvasCoords(math::Point2d<float> p, Canvas canvas);
+		yorumathpoint::Point2i toCanvasCoords(yorumathpoint::Point2f p, Canvas canvas);
 
 	private:
 		double width, height;

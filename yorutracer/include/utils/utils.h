@@ -3,19 +3,6 @@
 
 #define NAMEOF(name) #name // kind of C# nameof(). From https://dev.to/tomoyukiaota/exploring-c-equivalent-of-cs-nameof-operator-1p8c
 
-#define MATRIX_3x3_SIZE 9
-#define MATRIX_3x3_ROW_SIZE MATRIX_3x3_SIZE/3
-
-#define IMAGE_WIDTH 500
-#define IMAGE_HEIGHT 500
-
-#define CANVAS_WIDTH 500
-#define CANVAS_HEIGHT 500
-
-#ifndef M_PI
-#define M_PI 3.14159265358979323846264338327950288
-#endif
-
 #include <math.h>
 
 #include <glm\vec2.hpp>
@@ -24,7 +11,7 @@
 #include <glm\mat3x3.hpp>
 #include <FreeImage.h>
 
-#include "math\point3d.h"
+#include "math\point.h"
 
 namespace yoru {
 namespace utils {
@@ -54,7 +41,7 @@ namespace utils {
 		return abs(a-b) <= epsilon;
 	}
 
-	inline RGBQUAD toRGBQUAD(const math::Point3d& p)
+	inline RGBQUAD toRGBQUAD(const math::Point3f& p)
 	{
 		RGBQUAD rgb;
 		rgb.rgbRed = static_cast<BYTE>(p.getX() * 255);

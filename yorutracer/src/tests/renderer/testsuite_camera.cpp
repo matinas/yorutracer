@@ -2,6 +2,8 @@
 #include <iomanip>
 #include <assert.h>
 
+#include "math\point.h"
+#include "math\vector.h"
 #include "tests\testsuite.h"
 #include "tests\renderer\testsuite_camera.h"
 #include "renderer\camera.h"
@@ -28,35 +30,35 @@ namespace test {
 	namespace testsuitecamera {
 
 		void checkViewport_createCameraFromFOV_test(renderer::Camera camera, renderer::Viewport expectedViewport);
-		void checkCameraBasicSettings_test(renderer::Camera camera, math::Point3d expectedOrigin, math::Vector3d expectedUp, math::Vector3d expectedForward, float expectedNear, float expectedFar, float expectedFovH, float expectedFovV);
+		void checkCameraBasicSettings_test(renderer::Camera camera, yorumathpoint::Point3f expectedOrigin, yorumathvector::Vector3f expectedUp, yorumathvector::Vector3f expectedForward, float expectedNear, float expectedFar, float expectedFovH, float expectedFovV);
 
 		void createCamera_invalid()
 		{
 			// create camera with invalid near projection plane distance
-			yoru::renderer::Camera camera = renderer::Camera(math::Point3d(10.0f, 0.0f, 0.0f), math::Vector3d(0.0f, 1.0f, 0.0f), math::Vector3d(0.0f, 0.0f, 1.0f), -1.0f, yoru::renderer::Camera::DefaultFarPlane, yoru::renderer::Camera::DefaultFovH, yoru::renderer::Camera::DefaultFovV);
-			yoru::math::Point3d expectedOrigin = math::Point3d(10.0f, 0.0f, 0.0f);
-			yoru::math::Vector3d expectedUp = math::Vector3d(0.0f, 1.0f, 0.0f);
-			yoru::math::Vector3d expectedForward = math::Vector3d(0.0f, 0.0f, 1.0f);
-			float expectedNear = yoru::renderer::Camera::DefaultNearPlane;
-			float expectedFar = yoru::renderer::Camera::DefaultFarPlane;
-			float expectedFovH = yoru::renderer::Camera::DefaultFovH;
-			float expectedFovV = yoru::renderer::Camera::DefaultFovV;
+			renderer::Camera camera = renderer::Camera(yorumathpoint::Point3f(10.0f, 0.0f, 0.0f), yorumathvector::Vector3f(0.0f, 1.0f, 0.0f), yorumathvector::Vector3f(0.0f, 0.0f, 1.0f), -1.0f, renderer::Camera::DefaultFarPlane, renderer::Camera::DefaultFovH, renderer::Camera::DefaultFovV);
+			yorumathpoint::Point3f expectedOrigin = yorumathpoint::Point3f(10.0f, 0.0f, 0.0f);
+			yorumathvector::Vector3f expectedUp = yorumathvector::Vector3f(0.0f, 1.0f, 0.0f);
+			yorumathvector::Vector3f expectedForward = yorumathvector::Vector3f(0.0f, 0.0f, 1.0f);
+			float expectedNear = renderer::Camera::DefaultNearPlane;
+			float expectedFar = renderer::Camera::DefaultFarPlane;
+			float expectedFovH = renderer::Camera::DefaultFovH;
+			float expectedFovV = renderer::Camera::DefaultFovV;
 			checkCameraBasicSettings_test(camera, expectedOrigin, expectedUp, expectedForward, expectedNear, expectedFar, expectedFovH, expectedFovV);
 
 			// create camera with invalid far projection plane distance
-			camera = renderer::Camera(math::Point3d(10.0f, 0.0f, 0.0f), math::Vector3d(0.0f, 1.0f, 0.0f), math::Vector3d(0.0f, 0.0f, 1.0f), yoru::renderer::Camera::DefaultNearPlane, -1.0f, yoru::renderer::Camera::DefaultFovH, yoru::renderer::Camera::DefaultFovV);
+			camera = renderer::Camera(yorumathpoint::Point3f(10.0f, 0.0f, 0.0f), yorumathvector::Vector3f(0.0f, 1.0f, 0.0f), yorumathvector::Vector3f(0.0f, 0.0f, 1.0f), renderer::Camera::DefaultNearPlane, -1.0f, renderer::Camera::DefaultFovH, renderer::Camera::DefaultFovV);
 			checkCameraBasicSettings_test(camera, expectedOrigin, expectedUp, expectedForward, expectedNear, expectedFar, expectedFovH, expectedFovV);
 
 			// create camera with invalid horizontal FOV
-			camera = renderer::Camera(math::Point3d(10.0f, 0.0f, 0.0f), math::Vector3d(0.0f, 1.0f, 0.0f), math::Vector3d(0.0f, 0.0f, 1.0f), yoru::renderer::Camera::DefaultNearPlane, yoru::renderer::Camera::DefaultFarPlane, -1.0f, yoru::renderer::Camera::DefaultFovV);
+			camera = renderer::Camera(yorumathpoint::Point3f(10.0f, 0.0f, 0.0f), yorumathvector::Vector3f(0.0f, 1.0f, 0.0f), yorumathvector::Vector3f(0.0f, 0.0f, 1.0f), renderer::Camera::DefaultNearPlane, renderer::Camera::DefaultFarPlane, -1.0f, renderer::Camera::DefaultFovV);
 			checkCameraBasicSettings_test(camera, expectedOrigin, expectedUp, expectedForward, expectedNear, expectedFar, expectedFovH, expectedFovV);
 			
 			// create camera with invalid vertical FOV
-			camera = renderer::Camera(math::Point3d(10.0f, 0.0f, 0.0f), math::Vector3d(0.0f, 1.0f, 0.0f), math::Vector3d(0.0f, 0.0f, 1.0f), yoru::renderer::Camera::DefaultNearPlane, yoru::renderer::Camera::DefaultFarPlane, yoru::renderer::Camera::DefaultFovH, -1.0f);
+			camera = renderer::Camera(yorumathpoint::Point3f(10.0f, 0.0f, 0.0f), yorumathvector::Vector3f(0.0f, 1.0f, 0.0f), yorumathvector::Vector3f(0.0f, 0.0f, 1.0f), renderer::Camera::DefaultNearPlane, renderer::Camera::DefaultFarPlane, renderer::Camera::DefaultFovH, -1.0f);
 			checkCameraBasicSettings_test(camera, expectedOrigin, expectedUp, expectedForward, expectedNear, expectedFar, expectedFovH, expectedFovV);
 
 			// create camera with invalid viewport
-			camera = renderer::Camera(math::Point3d(10.0f, 0.0f, 0.0f), math::Vector3d(0.0f, 1.0f, 0.0f), math::Vector3d(0.0f, 0.0f, 1.0f), 1.0f, 100.0f, renderer::Viewport(-1.0, -1.0));
+			camera = renderer::Camera(yorumathpoint::Point3f(10.0f, 0.0f, 0.0f), yorumathvector::Vector3f(0.0f, 1.0f, 0.0f), yorumathvector::Vector3f(0.0f, 0.0f, 1.0f), 1.0f, 100.0f, renderer::Viewport(-1.0, -1.0));
 			expectedFovH = 53.13;
 			expectedFovV = 53.13;
 			renderer::Viewport expectedViewport = renderer::Viewport(1.0, 1.0);
@@ -68,9 +70,9 @@ namespace test {
 		{
 			// create camera with default values
 			renderer::Camera camera = renderer::Camera();
-			math::Point3d expectedOrigin = math::Point3d(0.0f, 0.0f, 0.0f);
-			math::Vector3d expectedUp = math::Vector3d(0.0f, 1.0f, 0.0f);
-			math::Vector3d expectedForward = math::Vector3d(0.0f, 0.0f, 1.0f);
+			yorumathpoint::Point3f expectedOrigin = yorumathpoint::Point3f(0.0f, 0.0f, 0.0f);
+			yorumathvector::Vector3f expectedUp = yorumathvector::Vector3f(0.0f, 1.0f, 0.0f);
+			yorumathvector::Vector3f expectedForward = yorumathvector::Vector3f(0.0f, 0.0f, 1.0f);
 			float expectedNear = renderer::Camera::DefaultNearPlane;
 			float expectedFar = renderer::Camera::DefaultFarPlane;
 			float expectedFovH = renderer::Camera::DefaultFovH;
@@ -78,10 +80,10 @@ namespace test {
 			checkCameraBasicSettings_test(camera, expectedOrigin, expectedUp, expectedForward, expectedNear, expectedFar, expectedFovH, expectedFovV);
 
 			// create camera specifying origin, up, and forward vectors (remaining settings with default values)
-			camera = renderer::Camera(math::Point3d(10.0f, 0.0f, 0.0f), math::Vector3d(0.0f, 1.0f, 1.0f), math::Vector3d(0.0f, -1.0f, 1.0f));
-			expectedOrigin = math::Point3d(10.0f, 0.0f, 0.0f);
-			expectedUp = math::Vector3d(0.0f, 1.0f, 1.0f);
-			expectedForward = math::Vector3d(0.0f, -1.0f, 1.0f);
+			camera = renderer::Camera(yorumathpoint::Point3f(10.0f, 0.0f, 0.0f), yorumathvector::Vector3f(0.0f, 1.0f, 1.0f), yorumathvector::Vector3f(0.0f, -1.0f, 1.0f));
+			expectedOrigin = yorumathpoint::Point3f(10.0f, 0.0f, 0.0f);
+			expectedUp = yorumathvector::Vector3f(0.0f, 1.0f, 1.0f);
+			expectedForward = yorumathvector::Vector3f(0.0f, -1.0f, 1.0f);
 			expectedNear = renderer::Camera::DefaultNearPlane;
 			expectedFar = renderer::Camera::DefaultFarPlane;
 			expectedFovH = renderer::Camera::DefaultFovH;
@@ -89,10 +91,10 @@ namespace test {
 			checkCameraBasicSettings_test(camera, expectedOrigin, expectedUp, expectedForward, expectedNear, expectedFar, expectedFovH, expectedFovV);
 
 			// create camera specifying origin, up, and forward vectors, near plane distance, far plane distance, and symmetrical FOV
-			camera = renderer::Camera(math::Point3d(10.0f, 0.0f, 0.0f), math::Vector3d(0.0f, 1.0f, 1.0f), math::Vector3d(0.0f, -1.0f, 1.0f), 10.0f, 50.0f, 50.0f);
-			expectedOrigin = math::Point3d(10.0f, 0.0f, 0.0f);
-			expectedUp = math::Vector3d(0.0f, 1.0f, 1.0f);
-			expectedForward = math::Vector3d(0.0f, -1.0f, 1.0f);
+			camera = renderer::Camera(yorumathpoint::Point3f(10.0f, 0.0f, 0.0f), yorumathvector::Vector3f(0.0f, 1.0f, 1.0f), yorumathvector::Vector3f(0.0f, -1.0f, 1.0f), 10.0f, 50.0f, 50.0f);
+			expectedOrigin = yorumathpoint::Point3f(10.0f, 0.0f, 0.0f);
+			expectedUp = yorumathvector::Vector3f(0.0f, 1.0f, 1.0f);
+			expectedForward = yorumathvector::Vector3f(0.0f, -1.0f, 1.0f);
 			expectedNear = 10.0f;
 			expectedFar = 50.0f;
 			expectedFovH = 50.0f;
@@ -100,10 +102,10 @@ namespace test {
 			checkCameraBasicSettings_test(camera, expectedOrigin, expectedUp, expectedForward, expectedNear, expectedFar, expectedFovH, expectedFovV);
 
 			// create camera specifying origin, up, and forward vectors, near plane distance, far plane distance, and assymmetrical FOV horizontal and vertical, respectively
-			camera = renderer::Camera(math::Point3d(10.0f, 0.0f, 0.0f), math::Vector3d(0.0f, 1.0f, 1.0f), math::Vector3d(0.0f, -1.0f, 1.0f), 10.0f, 50.0f, 150.0f, 50.0f);
-			expectedOrigin = math::Point3d(10.0f, 0.0f, 0.0f);
-			expectedUp = math::Vector3d(0.0f, 1.0f, 1.0f);
-			expectedForward = math::Vector3d(0.0f, -1.0f, 1.0f);
+			camera = renderer::Camera(yorumathpoint::Point3f(10.0f, 0.0f, 0.0f), yorumathvector::Vector3f(0.0f, 1.0f, 1.0f), yorumathvector::Vector3f(0.0f, -1.0f, 1.0f), 10.0f, 50.0f, 150.0f, 50.0f);
+			expectedOrigin = yorumathpoint::Point3f(10.0f, 0.0f, 0.0f);
+			expectedUp = yorumathvector::Vector3f(0.0f, 1.0f, 1.0f);
+			expectedForward = yorumathvector::Vector3f(0.0f, -1.0f, 1.0f);
 			expectedNear = 10.0f;
 			expectedFar = 50.0f;
 			expectedFovH = 150.0f;
@@ -114,7 +116,7 @@ namespace test {
 		void checkViewport_createCameraFromViewport_test(renderer::Camera camera, float expectedFovH, float expectedFovV);
 		void checkFOV_createCameraFromSymmetricalViewport()
 		{
-			renderer::Camera camera = renderer::Camera(math::Point3d(10.0f, 0.0f, 0.0f), math::Vector3d(0.0f, 1.0f, 0.0f), math::Vector3d(0.0f, 0.0f, 1.0f), 1.0f, 100.0f, renderer::Viewport(1.0, 1.0));
+			renderer::Camera camera = renderer::Camera(yorumathpoint::Point3f(10.0f, 0.0f, 0.0f), yorumathvector::Vector3f(0.0f, 1.0f, 0.0f), yorumathvector::Vector3f(0.0f, 0.0f, 1.0f), 1.0f, 100.0f, renderer::Viewport(1.0, 1.0));
 			float expectedFovH = 53.13;
 			float expectedFovV = 53.13;
 
@@ -123,7 +125,7 @@ namespace test {
 
 		void checkFOV_createCameraFromAsymmetricalViewport()
 		{
-			renderer::Camera camera = renderer::Camera(math::Point3d(10.0f, 0.0f, 0.0f), math::Vector3d(0.0f, 1.0f, 0.0f), math::Vector3d(0.0f, 0.0f, 1.0f), 1.0f, 100.0f, renderer::Viewport(1.5, 1.0));
+			renderer::Camera camera = renderer::Camera(yorumathpoint::Point3f(10.0f, 0.0f, 0.0f), yorumathvector::Vector3f(0.0f, 1.0f, 0.0f), yorumathvector::Vector3f(0.0f, 0.0f, 1.0f), 1.0f, 100.0f, renderer::Viewport(1.5, 1.0));
 			float expectedFovH = 73.73;
 			float expectedFovV = 53.13;
 
@@ -132,7 +134,7 @@ namespace test {
 
 		void checkViewport_createCameraFromSymmetricalFOV()
 		{
-			renderer::Camera camera = renderer::Camera(math::Point3d(10.0f, 0.0f, 0.0f), math::Vector3d(0.0f, 1.0f, 0.0f), math::Vector3d(0.0f, 0.0f, 1.0f), 1.0f, 100.0f, 53.13f);
+			renderer::Camera camera = renderer::Camera(yorumathpoint::Point3f(10.0f, 0.0f, 0.0f), yorumathvector::Vector3f(0.0f, 1.0f, 0.0f), yorumathvector::Vector3f(0.0f, 0.0f, 1.0f), 1.0f, 100.0f, 53.13f);
 			renderer::Viewport expectedViewport = renderer::Viewport(1.0, 1.0);
 			
 			checkViewport_createCameraFromFOV_test(camera, expectedViewport);
@@ -140,7 +142,7 @@ namespace test {
 
 		void checkViewport_createCameraFromAsymmetricalFOV()
 		{
-			renderer::Camera camera = renderer::Camera(math::Point3d(10.0f, 0.0f, 0.0f), math::Vector3d(0.0f, 1.0f, 0.0f), math::Vector3d(0.0f, 0.0f, 1.0f), 1.0f, 100.0f, 90.0, 53.0);
+			renderer::Camera camera = renderer::Camera(yorumathpoint::Point3f(10.0f, 0.0f, 0.0f), yorumathvector::Vector3f(0.0f, 1.0f, 0.0f), yorumathvector::Vector3f(0.0f, 0.0f, 1.0f), 1.0f, 100.0f, 90.0, 53.0);
 			renderer::Viewport expectedViewport = renderer::Viewport(2.0, 1.0);
 			
 			checkViewport_createCameraFromFOV_test(camera, expectedViewport);
@@ -148,7 +150,7 @@ namespace test {
 
 		////////////// tests' core logic functions
 
-		void checkCameraBasicSettings_test(renderer::Camera camera, math::Point3d expectedOrigin, math::Vector3d expectedUp, math::Vector3d expectedForward,
+		void checkCameraBasicSettings_test(renderer::Camera camera, yorumathpoint::Point3f expectedOrigin, yorumathvector::Vector3f expectedUp, yorumathvector::Vector3f expectedForward,
 										   float expectedNear, float expectedFar, float expectedFovH, float expectedFovV)
 		{
 			assert(camera.getOrigin().getX() == expectedOrigin.getX() && camera.getOrigin().getY() == expectedOrigin.getY() && camera.getOrigin().getZ() == expectedOrigin.getZ() && "The camera has the wrong origin point");

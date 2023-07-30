@@ -1,7 +1,7 @@
 #ifndef CANVAS_H
 #define CANVAS_H
 
-#include "math\point2d.h"
+#include "math\point.h"
 #include "math\matrix\matrix3x3.h"
 #include "math\transformation\affine2d.h"
 
@@ -20,15 +20,15 @@ namespace renderer {
 		// creates a canvas with a custom center relative to the global 2D/UI world space coordinate system origin which is at (0,0)
 		// the origin of the canvas by (our) convention is at the center of the rectangle defined by width/height
 		// starting from the origin, x goes right and y goes up, in the same way as the global 2D/UI world space coordinate system (z=0)
-		Canvas(int width, int height, math::Point2d<int> center);
+		Canvas(int width, int height, yorumathpoint::Point2i center);
 
 		~Canvas();
 
 		int getWidth();
 		int getHeight();
 
-		math::Point2d<int> getCenter();
-		math::Point2d<int>* getPoint(int x, int y);
+		yorumathpoint::Point2i getCenter();
+		yorumathpoint::Point2i* getPoint(int x, int y);
 
 		// the returned transformation allows to take a point in the canvas local coordinate system to
 		// a point in the global 2D/UI world space coordinate system (z=0) upon which the canvas is defined
@@ -40,19 +40,19 @@ namespace renderer {
 
 		// takes a point in the canvas local coordinate system to a point in the specified screen local coordinate system,
 		// assuming both coordinate systems are custom-positioned in relation to the global 2D/UI world space coordinate system (z=0)
-		math::Point2d<int> toScreenWorldCoords(math::Point2d<int> p, Screen screen);
+		yorumathpoint::Point2i toScreenWorldCoords(yorumathpoint::Point2i p, Screen screen);
 
 		// takes a point in the canvas local coordinate system to a point in the specified screen local coordinate system, assuming both the canvas and the
 		// screen "match" exactly (except for any difference in scale), regardless their relative position in the global 2D/UI world space coordinate system (z=0)
 		// use this function whenever just mapping a 2D point inside the canvas to a 2D point inside the screen is needed
-		math::Point2d<int> toScreenCoords(math::Point2d<int> p, Screen screen);
+		yorumathpoint::Point2i toScreenCoords(yorumathpoint::Point2i p, Screen screen);
 
 		// takes a point in the canvas local coordinate system (pixel) to a point in the specified camera's viewport local coordinate system (world coordinate)
-		math::Point3d toViewportCoords(math::Point2d<int> p, Camera camera);
+		yorumathpoint::Point3f toViewportCoords(yorumathpoint::Point2i p, Camera camera);
 
 	private:
 		int width, height, halfWidth, halfHeight;
-		math::Point2d<int> center;
+		yorumathpoint::Point2i center;
 		math::Affine2d canvasToWorldTransform, worldToCanvasTransform, screenCoordsTransform;
 		
 		math::Affine2d getWorldTransform();

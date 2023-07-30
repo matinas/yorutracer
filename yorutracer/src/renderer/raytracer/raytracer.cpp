@@ -6,7 +6,6 @@
 #include "renderer\raytracer\rayintersectioninfo.h"
 
 #include "objects\sphere.h"
-
 #include "utils\utils.h"
 
 RGBQUAD rgbBlack = {0,0,0};
@@ -44,10 +43,10 @@ namespace renderer {
 	void Raytracer::render()
 	{
 		// FIXME: scene objects must be handled separately, this is temporary here just to quickly test rendering
-		yoru::objects::Sphere blueSphere = yoru::objects::Sphere(math::Point3d(0.0f,0.0f,3.0f), 1.0f, math::Point3d(0.f,0.f,1.0f));
-		yoru::objects::Sphere redSphere2 = yoru::objects::Sphere(math::Point3d(1.f,0.f,4.5f), 1.5f, math::Point3d(1.f,0.f,0.0f));
+		objects::Sphere blueSphere = objects::Sphere(yorumathpoint::Point3f(0.0f,0.0f,3.0f), 1.0f, yorumathpoint::Point3f(0.f,0.f,1.0f));
+		objects::Sphere redSphere2 = objects::Sphere(yorumathpoint::Point3f(1.f,0.f,4.5f), 1.5f, yorumathpoint::Point3f(1.f,0.f,0.0f));
 		
-		std::vector<yoru::objects::Sphere> spheres = std::vector<yoru::objects::Sphere>();
+		std::vector<objects::Sphere> spheres = std::vector<objects::Sphere>();
 
 		spheres.push_back(blueSphere);
 		spheres.push_back(redSphere2);
@@ -60,21 +59,21 @@ namespace renderer {
 		{
 			for (int j=-height/2; j<height/2; ++j)
 			{
-				math::Point3d viewportPoint = canvas.toViewportCoords(math::Point2d<int>(i,j), camera);
+				yorumathpoint::Point3f viewportPoint = canvas.toViewportCoords(yorumathpoint::Point2i(i,j), camera);
 				Ray ray = Ray(camera.getOrigin(), viewportPoint);
 
 				for (int obj=0; obj<spheres.size(); obj++) // TODO: we must go through all the objects in the scene here and keep the nearest hit
 				{
 					yoru:objects::Sphere sphere = spheres[obj];
 					sphere.transform(camera.getViewMatrix()); // TODO: we still need to take into acount the camera position as part of this (right now we support only rotation)
-					math::Point3d sphereColor = sphere.getColor();
+					yorumathpoint::Point3f sphereColor = sphere.getColor();
 					RGBQUAD sphereRGB = utils::toRGBQUAD(sphereColor);
 
 					RayIntersectionInfo hitInfo = sphere.intersect(ray);
 					
 					if (hitInfo.hasHits())
 					{
-						math::Point3d* point = hitInfo.getNearest();
+						yorumathpoint::Point3f* point = hitInfo.getNearest();
 						rgb = camera.isInsideVolume(*point) ? sphereRGB : rgbBlack; // check whether the hit point is in front of the camera (don't render anything behind the camera)
 
 						break;
@@ -85,7 +84,7 @@ namespace renderer {
 					}
 				}
 
-				math::Point2d<int> screenPoint = canvas.toScreenCoords(math::Point2d<int>(i,j), screen);
+				yorumathpoint::Point2i screenPoint = canvas.toScreenCoords(yorumathpoint::Point2i(i,j), screen);
 
 				// we need to take into account that FreeImage coordinate system differs from the one we defined for the screen: origin at top-right, x goes right, y goes down
 				// instead it uses a coordinate system where origin is at bottom-right, x goes right, y goes up, so we need to mirror the y (yes, once again)

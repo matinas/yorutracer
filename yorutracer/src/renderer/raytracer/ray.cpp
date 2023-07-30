@@ -4,11 +4,11 @@ using namespace yoru;
 
 Ray::Ray()
 {
-	this->origin = math::Point3d(0.f,0.f,0.f);
-	this->destination = math::Point3d(0.f,0.f,1.f);
+	this->origin = yorumathpoint::Point3f(0.f,0.f,0.f);
+	this->destination = yorumathpoint::Point3f(0.f,0.f,1.f);
 }
 
-Ray::Ray(const math::Point3d& origin, const math::Point3d& destination)
+Ray::Ray(const yorumathpoint::Point3f& origin, const yorumathpoint::Point3f& destination)
 {
 	this->origin = origin;
 	this->destination = destination;
@@ -18,12 +18,12 @@ Ray::~Ray()
 {
 }
 
-math::Point3d Ray::getOrigin() const
+yorumathpoint::Point3f Ray::getOrigin() const
 {
 	return origin;
 }
 
-math::Point3d Ray::getDestination() const
+yorumathpoint::Point3f Ray::getDestination() const
 {
 	return destination;
 }
