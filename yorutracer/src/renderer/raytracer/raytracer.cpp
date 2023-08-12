@@ -62,7 +62,7 @@ namespace renderer {
 				yorumathpoint::Point3f viewportPoint = canvas.toViewportCoords(yorumathpoint::Point2i(i,j), camera);
 				Ray ray = Ray(camera.getOrigin(), viewportPoint);
 
-				for (int obj=0; obj<spheres.size(); obj++) // TODO: we must go through all the objects in the scene here and keep the nearest hit
+				for (unsigned obj=0; obj<spheres.size(); obj++) // TODO: we must go through all the objects in the scene here and keep the nearest hit
 				{
 					yoru:objects::Sphere sphere = spheres[obj];
 					sphere.transform(camera.getViewMatrix()); // TODO: we still need to take into acount the camera position as part of this (right now we support only rotation)

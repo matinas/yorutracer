@@ -72,7 +72,7 @@
     <ClInclude Include="include\tests\renderer\testsuite_screen.h" />
     <ClInclude Include="include\tests\test.h" />
     <ClInclude Include="include\tests\testsuite.h" />
-    <ClInclude Include="include\utils\commons.h" />
+    <ClInclude Include="include\utils\common.h" />
     <ClInclude Include="include\utils\timer.h" />
     <ClInclude Include="include\utils\utils.h" />
   </ItemGroup>
@@ -144,12 +144,15 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>$(ProjectDir)lib\glm;$(ProjectDir)lib\FreeImage\Dist\x32;$(ProjectDir)include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalLibraryDirectories>$(ProjectDir)lib\FreeImage\Dist\x32;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>FreeImage.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

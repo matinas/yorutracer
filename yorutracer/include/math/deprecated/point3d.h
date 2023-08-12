@@ -69,7 +69,7 @@ namespace deprecated {
 
 	typedef Point3d Point3f; // we define this in this way so as to be able to refer to either this deprecated Point3d or the newer more generic Point<T,3>
 							 // as Point3f (one inside yoru::math and the other inside yoru::math::deprecated). switching between one or the other is just
-							 // a matter of defining USE_DEPRECATED_POINT inside commons.h (which ends up setting the proper namespace alias yorumathpoint)
+							 // a matter of defining USE_DEPRECATED_POINT inside common.h (which ends up setting the proper namespace alias yorumathpoint)
 }}}
 
 #endif

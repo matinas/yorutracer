@@ -272,7 +272,7 @@
     <ClInclude Include="include\math\deprecated\point2d.h">
       <Filter>include\math\deprecated</Filter>
     </ClInclude>
-    <ClInclude Include="include\utils\commons.h">
+    <ClInclude Include="include\utils\common.h">
       <Filter>include\utils</Filter>
     </ClInclude>
   </ItemGroup>
